@@ -401,14 +401,14 @@ function Reveal({
 function Marquee() {
   const phrase = "QUALITY  •  CRAFTSMANSHIP  •  RELIABILITY  •  CUSTOMER SATISFACTION  •  ";
   return (
-    <div className="overflow-hidden border-y border-navy/10 bg-[var(--navy)] py-4">
-      <div className="marquee-track flex whitespace-nowrap text-[var(--tan)]">
+    <div className="w-full max-w-full overflow-hidden bg-[#011844] border-y border-white/10 py-3.5">
+      <div className="marquee-track flex whitespace-nowrap text-[#c2b5ad]">
         {Array.from({ length: 2 }).map((_, i) => (
           <div key={i} className="flex shrink-0">
             {Array.from({ length: 6 }).map((__, j) => (
               <span
                 key={j}
-                className="mx-8 text-sm font-semibold tracking-[0.32em]"
+                className="mx-6 text-xs font-semibold tracking-[0.28em] md:mx-8 md:text-sm"
               >
                 {phrase}
               </span>
@@ -578,17 +578,21 @@ function Nav() {
         {/* Mobile Hamburger Button */}
         <button
           type="button"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="flex h-10 w-10 items-center justify-center text-[var(--cream)] hover:text-[var(--tan)] md:hidden focus:outline-none focus:ring-2 focus:ring-[var(--tan)] rounded-md"
+          aria-expanded={mobileMenuOpen}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          onClick={(e) => {
+            e.stopPropagation();
+            setMobileMenuOpen((prev) => !prev);
+          }}
+          className="flex h-11 w-11 cursor-pointer touch-manipulation items-center justify-center rounded-md border border-white/20 bg-white/5 text-[var(--cream)] hover:text-[var(--tan)] md:hidden focus:outline-none focus:ring-2 focus:ring-[var(--tan)]"
         >
-          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {mobileMenuOpen ? <X className="h-6 w-6 text-[var(--tan)]" /> : <Menu className="h-6 w-6 text-[var(--cream)]" />}
         </button>
       </div>
 
       {/* Mobile Drawer Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-x-0 top-[65px] bottom-0 z-50 flex flex-col justify-between bg-[#011844] p-6 md:hidden overflow-y-auto border-t border-white/10">
+        <div className="absolute top-full left-0 right-0 z-50 flex h-[calc(100dvh-60px)] w-full flex-col justify-between border-t border-white/10 bg-[#011844] p-6 shadow-2xl md:hidden overflow-y-auto">
           <nav className="flex flex-col gap-3">
             {links.map(([label, id]) => (
               <a
@@ -602,7 +606,7 @@ function Nav() {
               </a>
             ))}
           </nav>
-          <div className="mt-8 flex flex-col gap-3 pb-6">
+          <div className="mt-8 flex flex-col gap-3 pb-8">
             <a
               href="https://wa.me/919569601581?text=Hello%20Louis%20Exim,%20I%20am%20interested%20in%20your%20leather%20products."
               target="_blank"
@@ -1610,9 +1614,9 @@ function WhatsAppFloatingCTA() {
 
 function Index() {
   return (
-    <div className="min-h-screen bg-[var(--cream)] text-[var(--ink)]">
+    <div className="min-h-screen bg-[var(--cream)] text-[var(--ink)] overflow-x-hidden w-full max-w-full">
       <Nav />
-      <main>
+      <main className="overflow-x-hidden w-full max-w-full">
         <Hero />
         <Marquee />
         <About />
