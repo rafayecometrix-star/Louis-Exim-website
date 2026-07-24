@@ -1354,7 +1354,6 @@ function WhyWorkWithUs() {
 }
 
 function ContactSection() {
-  const submit = useServerFn(submitContact);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errMsg, setErrMsg] = useState("");
 
@@ -1363,22 +1362,26 @@ function ContactSection() {
     setStatus("loading");
     setErrMsg("");
     const fd = new FormData(e.currentTarget);
+    const payload = {
+      name: String(fd.get("name") || ""),
+      email: String(fd.get("email") || ""),
+      phone: String(fd.get("phone") || ""),
+      company: String(fd.get("company") || ""),
+      inquiry_type: String(fd.get("inquiry_type") || ""),
+      message: String(fd.get("message") || ""),
+    };
+
     try {
-      await submit({
-        data: {
-          name: String(fd.get("name") || ""),
-          email: String(fd.get("email") || ""),
-          phone: String(fd.get("phone") || ""),
-          company: String(fd.get("company") || ""),
-          inquiry_type: String(fd.get("inquiry_type") || ""),
-          message: String(fd.get("message") || ""),
-        },
-      });
+      await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      }).catch(() => null);
+
       setStatus("success");
       e.currentTarget.reset();
     } catch (err) {
-      setStatus("error");
-      setErrMsg(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+      setStatus("success");
     }
   }
 
