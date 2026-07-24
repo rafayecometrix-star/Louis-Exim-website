@@ -956,6 +956,15 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
       )
     : [];
 
+  const handleGroupSelect = (groupId: string) => {
+    setGroup(groupId);
+    const targetGroup = PRODUCT_GROUPS.find((g) => g.id === groupId);
+    if (targetGroup && targetGroup.categoryIds.length > 0) {
+      setActive(targetGroup.categoryIds[0]);
+    }
+    setQuery("");
+  };
+
   const handleGroupKey = (e: React.KeyboardEvent, idx: number) => {
     if (e.key !== "ArrowRight" && e.key !== "ArrowLeft" && e.key !== "Home" && e.key !== "End") return;
     e.preventDefault();
@@ -965,7 +974,7 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
       : e.key === "ArrowLeft" ? (idx - 1 + last + 1) % (last + 1)
       : e.key === "Home" ? 0 : last;
     const target = PRODUCT_GROUPS[next];
-    setGroup(target.id);
+    handleGroupSelect(target.id);
     groupsRef.current[next]?.focus();
   };
 
@@ -1023,7 +1032,7 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
                   aria-selected={isActive}
                   aria-controls={`group-panel-${g.id}`}
                   tabIndex={0}
-                  onClick={() => setGroup(g.id)}
+                  onClick={() => handleGroupSelect(g.id)}
                   onKeyDown={(e) => handleGroupKey(e, i)}
                   className={
                     "group relative flex min-h-[88px] cursor-pointer touch-manipulation items-center gap-4 border p-6 text-left transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--navy)] focus-visible:ring-offset-2 focus-visible:ring-offset-white " +
