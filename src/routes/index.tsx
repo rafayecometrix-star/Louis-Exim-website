@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useServerFn } from "@tanstack/react-start";
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import {
   ShieldCheck,
@@ -47,7 +46,6 @@ import {
   ExternalLink,
   ChevronRight,
 } from "lucide-react";
-import { submitContact } from "@/lib/contact.functions";
 import heroImage from "../../hero-leather.jpg";
 
 export const Route = createFileRoute("/")({
