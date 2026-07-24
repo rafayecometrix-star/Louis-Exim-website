@@ -587,45 +587,59 @@ function Nav() {
         </button>
       </div>
 
-      {/* Mobile Drawer Overlay */}
-      {mobileMenuOpen && (
-        <div
-          className="fixed left-0 right-0 z-50 flex w-full flex-col justify-between border-t border-white/10 p-6 shadow-2xl md:hidden overflow-y-auto"
-          style={{ top: '60px', bottom: 0, backgroundColor: '#011844' }}
-        >
-          <nav className="flex flex-col gap-3">
-            {links.map(([label, id]) => (
-              <a
-                key={id}
-                href={`#${id}`}
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex cursor-pointer touch-manipulation items-center justify-between border-b border-white/10 pb-3 text-lg font-medium text-[var(--cream)] hover:text-[var(--tan)] transition"
-              >
-                <span>{label}</span>
-                <ChevronRight className="h-5 w-5 text-[var(--tan)]" />
-              </a>
-            ))}
-          </nav>
-          <div className="mt-8 flex flex-col gap-3 pb-8">
+      {/* Mobile Drawer Overlay — Always in DOM tree */}
+      <div
+        className={`fixed left-0 right-0 z-50 flex w-full flex-col justify-between border-t border-white/10 p-6 shadow-2xl md:hidden overflow-y-auto transition-all duration-200 ${
+          mobileMenuOpen ? "block opacity-100 pointer-events-auto" : "hidden opacity-0 pointer-events-none"
+        }`}
+        style={{ top: '60px', bottom: 0, backgroundColor: '#011844' }}
+      >
+        <nav className="flex flex-col gap-3">
+          {links.map(([label, id]) => (
             <a
-              href="https://wa.me/919569601581?text=Hello%20Louis%20Exim,%20I%20am%20interested%20in%20your%20leather%20products."
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex cursor-pointer touch-manipulation items-center justify-center gap-2 bg-[#25D366] py-3.5 text-sm font-semibold uppercase tracking-wider text-white rounded-sm shadow-md transition"
+              key={id}
+              href={`#${id}`}
+              onClick={(e) => {
+                setMobileMenuOpen(false);
+                const el = document.getElementById(id);
+                if (el) {
+                  e.preventDefault();
+                  el.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              className="flex cursor-pointer touch-manipulation items-center justify-between border-b border-white/10 pb-3 text-lg font-medium text-[var(--cream)] hover:text-[var(--tan)] transition"
             >
-              <MessageCircle className="h-5 w-5" /> Direct WhatsApp Inquiry
+              <span>{label}</span>
+              <ChevronRight className="h-5 w-5 text-[var(--tan)]" />
             </a>
-            <a
-              href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex cursor-pointer touch-manipulation items-center justify-center gap-2 bg-[var(--tan)] py-3.5 text-sm font-semibold uppercase tracking-wider text-[var(--navy)] rounded-sm shadow-md transition"
-            >
-              Request a Formal Quote <ArrowRight className="h-4 w-4" />
-            </a>
-          </div>
+          ))}
+        </nav>
+        <div className="mt-8 flex flex-col gap-3 pb-8">
+          <a
+            href="https://wa.me/919569601581?text=Hello%20Louis%20Exim,%20I%20am%20interested%20in%20your%20leather%20products."
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex cursor-pointer touch-manipulation items-center justify-center gap-2 bg-[#25D366] py-3.5 text-sm font-semibold uppercase tracking-wider text-white rounded-sm shadow-md transition"
+          >
+            <MessageCircle className="h-5 w-5" /> Direct WhatsApp Inquiry
+          </a>
+          <a
+            href="#contact"
+            onClick={(e) => {
+              setMobileMenuOpen(false);
+              const el = document.getElementById("contact");
+              if (el) {
+                e.preventDefault();
+                el.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            className="flex cursor-pointer touch-manipulation items-center justify-center gap-2 bg-[var(--tan)] py-3.5 text-sm font-semibold uppercase tracking-wider text-[var(--navy)] rounded-sm shadow-md transition"
+          >
+            Request a Formal Quote <ArrowRight className="h-4 w-4" />
+          </a>
         </div>
-      )}
+      </div>
     </header>
   );
 }
@@ -767,17 +781,19 @@ function About() {
         </div>
 
         <Reveal delay={160}>
-          <div className="mt-16 grid grid-cols-2 divide-x divide-[var(--tan)]/40 border-y border-[var(--tan)]/40 py-8 md:grid-cols-4">
+          <div className="mt-16 grid grid-cols-2 gap-y-6 divide-x divide-[var(--tan)]/40 border-y border-[var(--tan)]/40 py-8 md:grid-cols-4 md:gap-y-0">
             {stats.map(([label, value], i) => {
               const Icon = [Calendar, Building2, Boxes, MapPinned][i];
               return (
-                <div key={label} className="px-4 text-center">
+                <div key={label} className="px-2 text-center sm:px-4">
                   {Icon && <Icon className="mx-auto mb-2 h-5 w-5 text-[var(--tan)]" />}
-              <div className="font-display text-3xl text-[var(--navy)] md:text-4xl">{value}</div>
-              <div className="mt-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--ink)]/60">
-                {label}
-              </div>
-            </div>
+                  <div className="font-display text-lg font-bold leading-tight text-[var(--navy)] sm:text-2xl md:text-4xl break-words">
+                    {value}
+                  </div>
+                  <div className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--ink)]/60 sm:text-[11px] sm:tracking-[0.22em]">
+                    {label}
+                  </div>
+                </div>
               );
             })}
           </div>
@@ -1089,7 +1105,7 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
             key={`tabs-${group}`}
             role="tablist"
             aria-label={`${activeGroup.name} sub-categories`}
-            className="fade-up mt-8 flex flex-wrap justify-center gap-2 border-y border-[var(--tan)]/40 py-3"
+            className="fade-up mt-8 flex flex-nowrap justify-start gap-2 overflow-x-auto max-w-full border-y border-[var(--tan)]/40 py-3 sm:flex-wrap sm:justify-center sm:overflow-x-visible"
           >
             {subCategories.map((c, i) => {
               const isActive = active === c.id;
@@ -1105,10 +1121,10 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
                   onClick={() => setActive(c.id)}
                   onKeyDown={(e) => handleTabKey(e, i)}
                   className={
-                    "min-h-11 cursor-pointer touch-manipulation px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--navy)] focus-visible:ring-offset-2 focus-visible:ring-offset-white " +
+                    "min-h-11 shrink-0 cursor-pointer touch-manipulation px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--navy)] focus-visible:ring-offset-2 focus-visible:ring-offset-white " +
                     (isActive
-                      ? "bg-[var(--navy)] text-[var(--cream)]"
-                      : "text-[var(--ink)]/70 hover:text-[var(--navy)]")
+                      ? "bg-[var(--navy)] text-[var(--cream)] shadow-sm"
+                      : "bg-[var(--cream)] border border-[var(--border)] text-[var(--ink)]/80 hover:text-[var(--navy)]")
                   }
                 >
                   {c.name.replace(/^Safety Shoes — /, "")}

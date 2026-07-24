@@ -260,3 +260,12 @@
 .pulse-cta {
   animation: pulse-subtle 3s ease-in-out infinite;
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
