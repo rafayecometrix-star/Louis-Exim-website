@@ -47,8 +47,8 @@ import {
   ExternalLink,
   ChevronRight,
 } from "lucide-react";
-import { submitContact } from "@/lib/contact.functions";
-import heroImage from "@/assets/hero-leather.jpg";
+import { submitContact } from "./contact.functions";
+import heroImage from "./hero-leather.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
