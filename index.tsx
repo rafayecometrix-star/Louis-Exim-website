@@ -369,23 +369,7 @@ function useReveal<T extends HTMLElement>() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (typeof IntersectionObserver === "undefined") {
-      el.classList.add("reveal-in");
-      return;
-    }
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            el.classList.add("reveal-in");
-            io.unobserve(el);
-          }
-        });
-      },
-      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
-    );
-    io.observe(el);
-    return () => io.disconnect();
+    el.classList.add("reveal-in");
   }, []);
   return ref;
 }
@@ -406,7 +390,7 @@ function Reveal({
   return (
     <Comp
       ref={ref as any}
-      className={`reveal ${className}`}
+      className={`reveal reveal-in ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {children}
@@ -417,14 +401,14 @@ function Reveal({
 function Marquee() {
   const phrase = "QUALITY  •  CRAFTSMANSHIP  •  RELIABILITY  •  CUSTOMER SATISFACTION  •  ";
   return (
-    <div className="overflow-hidden border-y border-navy/10 bg-[var(--navy)] py-4">
-      <div className="marquee-track flex whitespace-nowrap text-[var(--tan)]">
+    <div className="w-full max-w-full overflow-hidden bg-[#011844] border-y border-white/10 py-3.5">
+      <div className="marquee-track flex whitespace-nowrap text-[#c2b5ad]">
         {Array.from({ length: 2 }).map((_, i) => (
           <div key={i} className="flex shrink-0">
             {Array.from({ length: 6 }).map((__, j) => (
               <span
                 key={j}
-                className="mx-8 text-sm font-semibold tracking-[0.32em]"
+                className="mx-6 text-xs font-semibold tracking-[0.28em] md:mx-8 md:text-sm"
               >
                 {phrase}
               </span>
@@ -444,17 +428,15 @@ function Eyebrow({ inverse = false }: { inverse?: boolean }) {
   );
 }
 
-function BeltSwatch({ color, name }: { color: string; name?: string }) {
+function BeltSwatch({ color }: { color: string }) {
   return (
     <div className="group relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden bg-gradient-to-br from-[#FAF8F5] via-[#EFEBE4] to-[#E3DDD5] p-4 transition-all duration-300">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.06)_100%)]" />
-      {/* Belt Strip */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.06)_100%)]" />
       <div className="relative flex w-full max-w-[88%] items-center justify-between">
         <div
           className="relative h-7 w-full rounded-sm shadow-[inset_0_2px_4px_rgba(255,255,255,0.25),0_4px_12px_rgba(0,0,0,0.25)] border-y border-[rgba(255,255,255,0.15)] flex items-center px-2 transition-transform duration-300 group-hover:scale-[1.02]"
           style={{ background: color }}
         >
-          {/* Subtle leather grain & stitch lines */}
           <div className="absolute inset-x-0 top-[2px] h-[1px] border-b border-dashed border-[rgba(255,255,255,0.3)] opacity-70" />
           <div className="absolute inset-x-0 bottom-[2px] h-[1px] border-b border-dashed border-[rgba(255,255,255,0.3)] opacity-70" />
           <div className="flex gap-4">
@@ -463,12 +445,11 @@ function BeltSwatch({ color, name }: { color: string; name?: string }) {
             <div className="h-1 w-1 rounded-full bg-black/40" />
           </div>
         </div>
-        {/* Buckle */}
         <div className="absolute right-0 h-9 w-9 rounded-md border-4 border-[#D4AF37] bg-gradient-to-br from-[#E6C65A] via-[#C59B27] to-[#8C6D13] shadow-md flex items-center justify-center">
           <div className="h-4 w-1 bg-[#4A3B0F] rounded-full" />
         </div>
       </div>
-      <div className="absolute bottom-2 right-2 flex items-center gap-1 rounded-full bg-[var(--navy)]/80 px-2 py-0.5 text-[9px] font-semibold tracking-wider text-[var(--tan)] backdrop-blur opacity-90 group-hover:opacity-100">
+      <div className="pointer-events-none absolute bottom-2 right-2 flex items-center gap-1 rounded-full px-2 py-0.5 text-[9px] font-semibold tracking-wider backdrop-blur opacity-90 group-hover:opacity-100" style={{ background: 'rgba(1,24,68,0.8)', color: '#c2b5ad' }}>
         <Eye className="h-3 w-3" /> Quick View
       </div>
     </div>
@@ -478,7 +459,7 @@ function BeltSwatch({ color, name }: { color: string; name?: string }) {
 function ShoeSwatch({ color }: { color: string }) {
   return (
     <div className="group relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden bg-gradient-to-br from-[#FAF8F5] via-[#EFEBE4] to-[#E3DDD5] p-4 transition-all duration-300">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.06)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.06)_100%)]" />
       <svg viewBox="0 0 140 70" className="h-28 w-auto transition-transform duration-300 group-hover:scale-105 filter drop-shadow-md">
         <path
           d="M10 50 C 25 24, 65 14, 92 24 L 118 28 C 130 30, 135 40, 128 52 L 24 56 C 14 56, 8 54, 10 50 Z"
@@ -486,13 +467,11 @@ function ShoeSwatch({ color }: { color: string }) {
           stroke="#000000"
           strokeWidth="0.5"
         />
-        {/* Steel toe reinforcement marker */}
         <path d="M 98 26 C 115 28, 125 38, 124 50 L 105 52 Z" fill="rgba(255,255,255,0.15)" />
-        {/* Outsole */}
         <rect x="8" y="54" width="120" height="8" rx="3" fill="#151515" />
         <line x1="15" y1="58" x2="120" y2="58" stroke="#D4AF37" strokeWidth="1" strokeDasharray="3 3" />
       </svg>
-      <div className="absolute bottom-2 right-2 flex items-center gap-1 rounded-full bg-[var(--navy)]/80 px-2 py-0.5 text-[9px] font-semibold tracking-wider text-[var(--tan)] backdrop-blur opacity-90 group-hover:opacity-100">
+      <div className="pointer-events-none absolute bottom-2 right-2 flex items-center gap-1 rounded-full px-2 py-0.5 text-[9px] font-semibold tracking-wider backdrop-blur opacity-90 group-hover:opacity-100" style={{ background: 'rgba(1,24,68,0.8)', color: '#c2b5ad' }}>
         <Eye className="h-3 w-3" /> Quick View
       </div>
     </div>
@@ -502,7 +481,7 @@ function ShoeSwatch({ color }: { color: string }) {
 function KeychainSwatch({ color }: { color: string }) {
   return (
     <div className="group relative flex aspect-[4/3] w-full items-center justify-center overflow-hidden bg-gradient-to-br from-[#FAF8F5] via-[#EFEBE4] to-[#E3DDD5] p-4 transition-all duration-300">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.06)_100%)]" />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,rgba(0,0,0,0.06)_100%)]" />
       <div className="flex flex-col items-center gap-1 transition-transform duration-300 group-hover:scale-105">
         <div className="h-7 w-7 rounded-full border-[3px] border-[#C59B27] bg-gradient-to-br from-[#E6C65A] to-[#8C6D13] shadow-sm flex items-center justify-center">
           <div className="h-3 w-3 rounded-full bg-white/40" />
@@ -516,7 +495,7 @@ function KeychainSwatch({ color }: { color: string }) {
           <span className="text-[7px] font-bold text-white/70 tracking-tighter">LOUIS EXIM</span>
         </div>
       </div>
-      <div className="absolute bottom-2 right-2 flex items-center gap-1 rounded-full bg-[var(--navy)]/80 px-2 py-0.5 text-[9px] font-semibold tracking-wider text-[var(--tan)] backdrop-blur opacity-90 group-hover:opacity-100">
+      <div className="pointer-events-none absolute bottom-2 right-2 flex items-center gap-1 rounded-full px-2 py-0.5 text-[9px] font-semibold tracking-wider backdrop-blur opacity-90 group-hover:opacity-100" style={{ background: 'rgba(1,24,68,0.8)', color: '#c2b5ad' }}>
         <Eye className="h-3 w-3" /> Quick View
       </div>
     </div>
@@ -533,6 +512,18 @@ function ProductVisual({ categoryId, color }: { categoryId: string; color: strin
 
 function Nav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [mobileMenuOpen]);
+
   const links = [
     ["About", "about"],
     ["Vision", "vision"],
@@ -544,7 +535,7 @@ function Nav() {
   ] as const;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-[var(--navy)]/95 backdrop-blur-md border-b border-white/10">
+    <header className="fixed inset-x-0 top-0 z-50 bg-[#011844] border-b border-white/10">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="#top" className="flex items-baseline gap-2 text-[var(--cream)]">
           <span className="font-display text-xl font-bold tracking-wide">LOUIS EXIM</span>
@@ -587,50 +578,68 @@ function Nav() {
         {/* Mobile Hamburger Button */}
         <button
           type="button"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="flex h-10 w-10 items-center justify-center text-[var(--cream)] hover:text-[var(--tan)] md:hidden focus:outline-none"
+          aria-expanded={mobileMenuOpen}
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          onClick={() => setMobileMenuOpen((prev) => !prev)}
+          className="relative z-[60] flex h-11 w-11 cursor-pointer touch-manipulation items-center justify-center rounded-md border border-white/20 bg-white/5 text-[var(--cream)] hover:text-[var(--tan)] md:hidden focus:outline-none focus:ring-2 focus:ring-[var(--tan)]"
         >
-          {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          {mobileMenuOpen ? <X className="h-6 w-6 text-[var(--tan)]" /> : <Menu className="h-6 w-6 text-[var(--cream)]" />}
         </button>
       </div>
 
-      {/* Mobile Drawer Overlay */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-x-0 top-[65px] bottom-0 z-40 flex flex-col justify-between bg-[var(--navy)]/98 p-6 backdrop-blur-xl md:hidden animate-in slide-in-from-top-4 duration-300 border-t border-white/10">
-          <nav className="flex flex-col gap-4">
-            {links.map(([label, id]) => (
-              <a
-                key={id}
-                href={`#${id}`}
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between border-b border-white/10 pb-3 text-lg font-medium text-[var(--cream)] hover:text-[var(--tan)]"
-              >
-                <span>{label}</span>
-                <ChevronRight className="h-5 w-5 text-[var(--tan)]" />
-              </a>
-            ))}
-          </nav>
-          <div className="mt-8 flex flex-col gap-3">
+      {/* Mobile Drawer Overlay — Always in DOM tree */}
+      <div
+        className={`fixed left-0 right-0 z-50 flex w-full flex-col justify-between border-t border-white/10 p-6 shadow-2xl md:hidden overflow-y-auto transition-all duration-200 ${
+          mobileMenuOpen ? "block opacity-100 pointer-events-auto" : "hidden opacity-0 pointer-events-none"
+        }`}
+        style={{ top: '60px', bottom: 0, backgroundColor: '#011844' }}
+      >
+        <nav className="flex flex-col gap-3">
+          {links.map(([label, id]) => (
             <a
-              href="https://wa.me/919569601581?text=Hello%20Louis%20Exim,%20I%20am%20interested%20in%20your%20leather%20products."
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 bg-[#25D366] py-3.5 text-sm font-semibold uppercase tracking-wider text-white rounded-sm shadow-md"
+              key={id}
+              href={`#${id}`}
+              onClick={(e) => {
+                setMobileMenuOpen(false);
+                const el = document.getElementById(id);
+                if (el) {
+                  e.preventDefault();
+                  el.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              className="flex cursor-pointer touch-manipulation items-center justify-between border-b border-white/10 pb-3 text-lg font-medium text-[var(--cream)] hover:text-[var(--tan)] transition"
             >
-              <MessageCircle className="h-5 w-5" /> Direct WhatsApp Inquiry
+              <span>{label}</span>
+              <ChevronRight className="h-5 w-5 text-[var(--tan)]" />
             </a>
-            <a
-              href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 bg-[var(--tan)] py-3.5 text-sm font-semibold uppercase tracking-wider text-[var(--navy)] rounded-sm shadow-md"
-            >
-              Request a Formal Quote <ArrowRight className="h-4 w-4" />
-            </a>
-          </div>
+          ))}
+        </nav>
+        <div className="mt-8 flex flex-col gap-3 pb-8">
+          <a
+            href="https://wa.me/919569601581?text=Hello%20Louis%20Exim,%20I%20am%20interested%20in%20your%20leather%20products."
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex cursor-pointer touch-manipulation items-center justify-center gap-2 bg-[#25D366] py-3.5 text-sm font-semibold uppercase tracking-wider text-white rounded-sm shadow-md transition"
+          >
+            <MessageCircle className="h-5 w-5" /> Direct WhatsApp Inquiry
+          </a>
+          <a
+            href="#contact"
+            onClick={(e) => {
+              setMobileMenuOpen(false);
+              const el = document.getElementById("contact");
+              if (el) {
+                e.preventDefault();
+                el.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+            className="flex cursor-pointer touch-manipulation items-center justify-center gap-2 bg-[var(--tan)] py-3.5 text-sm font-semibold uppercase tracking-wider text-[var(--navy)] rounded-sm shadow-md transition"
+          >
+            Request a Formal Quote <ArrowRight className="h-4 w-4" />
+          </a>
         </div>
-      )}
+      </div>
     </header>
   );
 }
@@ -772,17 +781,19 @@ function About() {
         </div>
 
         <Reveal delay={160}>
-          <div className="mt-16 grid grid-cols-2 divide-x divide-[var(--tan)]/40 border-y border-[var(--tan)]/40 py-8 md:grid-cols-4">
+          <div className="mt-16 grid grid-cols-2 gap-y-6 divide-x divide-[var(--tan)]/40 border-y border-[var(--tan)]/40 py-8 md:grid-cols-4 md:gap-y-0">
             {stats.map(([label, value], i) => {
               const Icon = [Calendar, Building2, Boxes, MapPinned][i];
               return (
-                <div key={label} className="px-4 text-center">
+                <div key={label} className="px-2 text-center sm:px-4">
                   {Icon && <Icon className="mx-auto mb-2 h-5 w-5 text-[var(--tan)]" />}
-              <div className="font-display text-3xl text-[var(--navy)] md:text-4xl">{value}</div>
-              <div className="mt-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-[var(--ink)]/60">
-                {label}
-              </div>
-            </div>
+                  <div className="font-display text-lg font-bold leading-tight text-[var(--navy)] sm:text-2xl md:text-4xl break-words">
+                    {value}
+                  </div>
+                  <div className="mt-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--ink)]/60 sm:text-[11px] sm:tracking-[0.22em]">
+                    {label}
+                  </div>
+                </div>
               );
             })}
           </div>
@@ -923,7 +934,6 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
   const tabsRef = useRef<Array<HTMLButtonElement | null>>([]);
   const groupsRef = useRef<Array<HTMLButtonElement | null>>([]);
 
-  // When group changes, snap to first sub-category and clear filter.
   useEffect(() => {
     setActive(subCategories[0].id);
     setQuery("");
@@ -934,7 +944,6 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
   const q = query.trim().toLowerCase();
   const isSearching = q.length > 0;
 
-  // Search across the whole active group; otherwise show the active sub-category only.
   const searchResults = isSearching
     ? subCategories.flatMap((c) =>
         c.products
@@ -947,6 +956,15 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
       )
     : [];
 
+  const handleGroupSelect = (groupId: string) => {
+    setGroup(groupId);
+    const targetGroup = PRODUCT_GROUPS.find((g) => g.id === groupId);
+    if (targetGroup && targetGroup.categoryIds.length > 0) {
+      setActive(targetGroup.categoryIds[0]);
+    }
+    setQuery("");
+  };
+
   const handleGroupKey = (e: React.KeyboardEvent, idx: number) => {
     if (e.key !== "ArrowRight" && e.key !== "ArrowLeft" && e.key !== "Home" && e.key !== "End") return;
     e.preventDefault();
@@ -956,7 +974,7 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
       : e.key === "ArrowLeft" ? (idx - 1 + last + 1) % (last + 1)
       : e.key === "Home" ? 0 : last;
     const target = PRODUCT_GROUPS[next];
-    setGroup(target.id);
+    handleGroupSelect(target.id);
     groupsRef.current[next]?.focus();
   };
 
@@ -1013,11 +1031,11 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
                   id={`group-tab-${g.id}`}
                   aria-selected={isActive}
                   aria-controls={`group-panel-${g.id}`}
-                  tabIndex={isActive ? 0 : -1}
-                  onClick={() => setGroup(g.id)}
+                  tabIndex={0}
+                  onClick={() => handleGroupSelect(g.id)}
                   onKeyDown={(e) => handleGroupKey(e, i)}
                   className={
-                    "group relative flex min-h-[88px] items-center gap-4 border p-6 text-left transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--navy)] focus-visible:ring-offset-2 focus-visible:ring-offset-white " +
+                    "group relative flex min-h-[88px] cursor-pointer touch-manipulation items-center gap-4 border p-6 text-left transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--navy)] focus-visible:ring-offset-2 focus-visible:ring-offset-white " +
                     (isActive
                       ? "border-[var(--navy)] bg-[var(--navy)] text-[var(--cream)] shadow-lg"
                       : "border-[var(--border)] bg-[var(--cream)] text-[var(--ink)] hover:-translate-y-1 hover:border-[var(--navy)] hover:shadow-md")
@@ -1025,7 +1043,7 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
                 >
                   <div
                     className={
-                      "flex h-14 w-14 shrink-0 items-center justify-center transition " +
+                      "pointer-events-none flex h-14 w-14 shrink-0 items-center justify-center transition " +
                       (isActive
                         ? "bg-[var(--tan)] text-[var(--navy)]"
                         : "bg-[var(--navy)] text-[var(--tan)]")
@@ -1033,7 +1051,7 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
                   >
                     <Icon className="h-7 w-7" />
                   </div>
-                  <div>
+                  <div className="pointer-events-none">
                     <p
                       className={
                         "text-[10px] font-semibold uppercase tracking-[0.22em] " +
@@ -1090,13 +1108,13 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
           )}
         </div>
 
-        {/* Sub-tabs (skip when only one or when searching) */}
+        {/* Sub-tabs */}
         {subCategories.length > 1 && !isSearching && (
           <div
             key={`tabs-${group}`}
             role="tablist"
             aria-label={`${activeGroup.name} sub-categories`}
-            className="fade-up mt-8 flex flex-wrap justify-center gap-2 border-y border-[var(--tan)]/40 py-3"
+            className="fade-up mt-8 flex flex-nowrap justify-start gap-2 overflow-x-auto max-w-full border-y border-[var(--tan)]/40 py-3 sm:flex-wrap sm:justify-center sm:overflow-x-visible"
           >
             {subCategories.map((c, i) => {
               const isActive = active === c.id;
@@ -1108,14 +1126,14 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
                   id={`subtab-${c.id}`}
                   aria-selected={isActive}
                   aria-controls={`subpanel-${c.id}`}
-                  tabIndex={isActive ? 0 : -1}
+                  tabIndex={0}
                   onClick={() => setActive(c.id)}
                   onKeyDown={(e) => handleTabKey(e, i)}
                   className={
-                    "min-h-11 px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--navy)] focus-visible:ring-offset-2 focus-visible:ring-offset-white " +
+                    "min-h-11 shrink-0 cursor-pointer touch-manipulation px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--navy)] focus-visible:ring-offset-2 focus-visible:ring-offset-white " +
                     (isActive
-                      ? "bg-[var(--navy)] text-[var(--cream)]"
-                      : "text-[var(--ink)]/70 hover:text-[var(--navy)]")
+                      ? "bg-[var(--navy)] text-[var(--cream)] shadow-sm"
+                      : "bg-[var(--cream)] border border-[var(--border)] text-[var(--ink)]/80 hover:text-[var(--navy)]")
                   }
                 >
                   {c.name.replace(/^Safety Shoes — /, "")}
@@ -1509,8 +1527,8 @@ function ProductModal({ product, categoryName, onClose, onSelectInquiry }: Produ
   );
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl overflow-hidden bg-[var(--cream)] border border-[var(--tan)] shadow-2xl rounded-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 backdrop-blur-sm" style={{ backgroundColor: 'rgba(0,0,0,0.8)' }} onClick={onClose}>
+      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-[var(--cream)] border border-[var(--tan)] shadow-2xl rounded-sm" onClick={(e) => e.stopPropagation()}>
         {/* Close Button */}
         <button
           type="button"
@@ -1621,9 +1639,9 @@ function WhatsAppFloatingCTA() {
 
 function Index() {
   return (
-    <div className="min-h-screen bg-[var(--cream)] text-[var(--ink)]">
+    <div className="min-h-screen bg-[var(--cream)] text-[var(--ink)] overflow-x-hidden w-full max-w-full">
       <Nav />
-      <main>
+      <main className="overflow-x-hidden w-full max-w-full">
         <Hero />
         <Marquee />
         <About />
