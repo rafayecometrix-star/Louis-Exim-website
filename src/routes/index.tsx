@@ -512,6 +512,18 @@ function ProductVisual({ categoryId, color }: { categoryId: string; color: strin
 
 function Nav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [mobileMenuOpen]);
+
   const links = [
     ["About", "about"],
     ["Vision", "vision"],
@@ -523,7 +535,7 @@ function Nav() {
   ] as const;
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-[var(--navy)]/95 backdrop-blur-md border-b border-white/10">
+    <header className="fixed inset-x-0 top-0 z-50 bg-[#011844] border-b border-white/10">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="#top" className="flex items-baseline gap-2 text-[var(--cream)]">
           <span className="font-display text-xl font-bold tracking-wide">LOUIS EXIM</span>
@@ -567,7 +579,7 @@ function Nav() {
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="flex h-10 w-10 items-center justify-center text-[var(--cream)] hover:text-[var(--tan)] md:hidden focus:outline-none"
+          className="flex h-10 w-10 items-center justify-center text-[var(--cream)] hover:text-[var(--tan)] md:hidden focus:outline-none focus:ring-2 focus:ring-[var(--tan)] rounded-md"
           aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
         >
           {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
@@ -576,34 +588,34 @@ function Nav() {
 
       {/* Mobile Drawer Overlay */}
       {mobileMenuOpen && (
-        <div className="fixed inset-x-0 top-[65px] bottom-0 z-40 flex flex-col justify-between bg-[var(--navy)]/98 p-6 backdrop-blur-xl md:hidden animate-in slide-in-from-top-4 duration-300 border-t border-white/10">
-          <nav className="flex flex-col gap-4">
+        <div className="fixed inset-x-0 top-[65px] bottom-0 z-50 flex flex-col justify-between bg-[#011844] p-6 md:hidden overflow-y-auto border-t border-white/10">
+          <nav className="flex flex-col gap-3">
             {links.map(([label, id]) => (
               <a
                 key={id}
                 href={`#${id}`}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between border-b border-white/10 pb-3 text-lg font-medium text-[var(--cream)] hover:text-[var(--tan)]"
+                className="flex items-center justify-between border-b border-white/10 pb-3 text-lg font-medium text-[var(--cream)] hover:text-[var(--tan)] transition"
               >
                 <span>{label}</span>
                 <ChevronRight className="h-5 w-5 text-[var(--tan)]" />
               </a>
             ))}
           </nav>
-          <div className="mt-8 flex flex-col gap-3">
+          <div className="mt-8 flex flex-col gap-3 pb-6">
             <a
               href="https://wa.me/919569601581?text=Hello%20Louis%20Exim,%20I%20am%20interested%20in%20your%20leather%20products."
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 bg-[#25D366] py-3.5 text-sm font-semibold uppercase tracking-wider text-white rounded-sm shadow-md"
+              className="flex items-center justify-center gap-2 bg-[#25D366] py-3.5 text-sm font-semibold uppercase tracking-wider text-white rounded-sm shadow-md transition"
             >
               <MessageCircle className="h-5 w-5" /> Direct WhatsApp Inquiry
             </a>
             <a
               href="#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 bg-[var(--tan)] py-3.5 text-sm font-semibold uppercase tracking-wider text-[var(--navy)] rounded-sm shadow-md"
+              className="flex items-center justify-center gap-2 bg-[var(--tan)] py-3.5 text-sm font-semibold uppercase tracking-wider text-[var(--navy)] rounded-sm shadow-md transition"
             >
               Request a Formal Quote <ArrowRight className="h-4 w-4" />
             </a>
@@ -1487,7 +1499,7 @@ function ProductModal({ product, categoryName, onClose, onSelectInquiry }: Produ
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl overflow-hidden bg-[var(--cream)] border border-[var(--tan)] shadow-2xl rounded-sm">
+      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-[var(--cream)] border border-[var(--tan)] shadow-2xl rounded-sm">
         {/* Close Button */}
         <button
           type="button"
