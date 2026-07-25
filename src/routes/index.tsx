@@ -47,6 +47,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import heroImage from "../../hero-leather.jpg";
+import logoImage from "../../logo.png";
 
 /* SEO meta tags are in index.html */
 
@@ -507,11 +508,9 @@ function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 bg-[#011844] border-b border-white/10">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-        <a href="#top" className="flex items-baseline gap-2 text-[var(--cream)]">
+        <a href="#top" className="flex items-center gap-2.5 text-[var(--cream)]">
+          <img src={logoImage} alt="Louis Exim logo" className="h-9 w-auto" />
           <span className="font-display text-xl font-bold tracking-wide">LOUIS EXIM</span>
-          <span className="hidden text-[10px] font-semibold uppercase tracking-[0.3em] text-[var(--tan)] sm:inline">
-            Kanpur, India
-          </span>
         </a>
 
         {/* Desktop Navigation */}
@@ -1462,7 +1461,10 @@ function Footer() {
   return (
     <footer className="bg-black py-10 text-[var(--cream)]/70">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 md:flex-row">
-        <div className="font-display text-lg text-[var(--cream)]">LOUIS EXIM</div>
+        <div className="flex items-center gap-3">
+          <img src={logoImage} alt="Louis Exim logo" className="h-8 w-auto" />
+          <span className="font-display text-lg text-[var(--cream)]">LOUIS EXIM</span>
+        </div>
         <p className="text-xs uppercase tracking-[0.25em] text-[var(--tan)]">
           Crafting Excellence. Delivering Trust.
         </p>
