@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+// Louis Exim — Single Page Website
 import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
 import {
   ShieldCheck,
@@ -48,27 +48,7 @@ import {
 } from "lucide-react";
 import heroImage from "../../hero-leather.jpg";
 
-export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Louis Exim — Premium Leather Goods & Safety Shoes | Kanpur, India" },
-      {
-        name: "description",
-        content:
-          "Manufacturer & exporter of premium leather belts, handcrafted accessories and safety footwear. OEM & private label. Global shipping to USA, UK, Germany, Canada, Australia, UAE.",
-      },
-      { property: "og:title", content: "Louis Exim — Quality You Wear, We Build" },
-      {
-        property: "og:description",
-        content:
-          "Premium leather goods & safety shoes manufacturer from Kanpur, India. Crafting excellence. Delivering trust.",
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: Index,
-});
+/* SEO meta tags are in index.html */
 
 /* ---------------- Product data ---------------- */
 
@@ -87,20 +67,20 @@ const CATEGORIES: Category[] = [
     id: "casual",
     name: "Casual Belts",
     tagline:
-      "Style, comfort and durability for everyday wear. Crafted from premium quality leather to complement your daily look.",
+      "Discover the perfect blend of style, comfort and durability with our casual belts collection. Crafted from premium quality leather, each belt is designed to complement your everyday look effortlessly.",
     products: [
-      { name: "Navy Blue Casual Belt", article: "260701", note: "Ideal for everyday casual style", swatch: "#1e2a4a" },
-      { name: "Burgundy Casual Belt", article: "260702", note: "Rich color for casual style", swatch: "#6b1f2a" },
-      { name: "Tan Casual Belt", article: "260703", swatch: "#a97142" },
-      { name: "Black Casual Belt", article: "260704", swatch: "#1a1a1a" },
-      { name: "Cognac Casual Belt", article: "260705", swatch: "#8a4a24" },
-      { name: "Chocolate Casual Belt", article: "260706", swatch: "#3d2116" },
+      { name: "Navy Blue Casual Belt", article: "260701", note: "Textured grain finish, stylish modern casual look", swatch: "#1e2a4a" },
+      { name: "Burgundy Casual Belt", article: "260702", note: "Rich burgundy shade, bold touch for casual style", swatch: "#6b1f2a" },
+      { name: "Brown Casual Belt", article: "260703", note: "Classic brown, timeless look for everyday wear", swatch: "#a97142" },
+      { name: "Black Textured Casual Belt", article: "260704", note: "Textured black, rugged versatile everyday look", swatch: "#1a1a1a" },
+      { name: "Black Matte Casual Belt", article: "260705", note: "Matte finish, clean minimal casual appearance", swatch: "#2c2c2c" },
+      { name: "Wine Red Casual Belt", article: "260706", note: "Elegant wine red, elevates everyday casual outfits", swatch: "#58181f" },
     ],
   },
   {
     id: "reversible",
     name: "Formal Reversible Belts",
-    tagline: "Two styles in one. Designed for versatility, crafted for elegance.",
+    tagline: "Experience two styles in one with our premium reversible formal belts collection. Designed for versatility, crafted for elegance. One belt. Two looks. Always impeccable.",
     slogan: "One belt. Two looks. Always impeccable.",
     highlights: [
       "Croco, Lizard & Exotic Texture Embossing",
@@ -110,19 +90,18 @@ const CATEGORIES: Category[] = [
       "Gift Packaging Available",
     ],
     products: [
-      { name: "Textured Brown Reversible Belt", article: "260707", swatch: "#5a3a24" },
-      { name: "Classic Black Reversible Belt", article: "260708", swatch: "#0f0f0f" },
-      { name: "Pebble Navy Reversible Belt", article: "260709", swatch: "#152244" },
-      { name: "Croco Brown Reversible Belt", article: "260710", swatch: "#4b2c17" },
-      { name: "Stitched Brown Reversible Belt", article: "260711", swatch: "#6d442a" },
-      { name: "Croco Black Reversible Belt", article: "260712", swatch: "#151515" },
+      { name: "Textured Brown Reversible Belt", article: "260707", note: "Brown Textured ⇄ Black Smooth", swatch: "#5a3a24" },
+      { name: "Classic Black Reversible Belt", article: "260708", note: "Black Smooth ⇄ Navy Blue", swatch: "#0f0f0f" },
+      { name: "Pebble Navy Reversible Belt", article: "260709", note: "Navy Pebble ⇄ Black Smooth", swatch: "#152244" },
+      { name: "Croco Brown Reversible Belt", article: "260710", note: "Cognac Croco ⇄ Black Smooth", swatch: "#4b2c17" },
+      { name: "Stitched Brown Reversible Belt", article: "260711", note: "Dark Brown ⇄ Black Smooth", swatch: "#6d442a" },
+      { name: "Croco Black Reversible Belt", article: "260712", note: "Black Croco ⇄ Dark Brown", swatch: "#151515" },
     ],
   },
   {
     id: "formal",
     name: "Formal Belts",
-    tagline:
-      "Elevate formal attire with premium handcrafted leather belts made for the modern gentleman.",
+    tagline: "Elevate your formal attire with our premium formal belts collection. Designed for the modern gentleman, each belt is crafted with precision, elegance, and superior quality leather for a refined and professional look.",
     highlights: [
       "Premium Handcrafted Leather",
       "Hand-Burnished & Hand-Painted Edges",
@@ -132,19 +111,18 @@ const CATEGORIES: Category[] = [
       "Gift Packaging Available",
     ],
     products: [
-      { name: "Cognac Croco Embossed Leather Belt", article: "260713", swatch: "#8a4a24" },
-      { name: "Classic Stitch Premium Leather Belt", article: "260714", swatch: "#2c1a10" },
-      { name: "Pebble Brown Grain Leather Belt", article: "260715", swatch: "#5a3520" },
-      { name: "Executive Stripe Premium Leather Belt", article: "260716", swatch: "#1a1a1a" },
-      { name: "Jet Black Smooth Leather Belt", article: "260717", swatch: "#0a0a0a" },
-      { name: "Midnight Blue Brushed Leather Belt", article: "260718", swatch: "#0f1a3a" },
+      { name: "Cognac Croco Formal Belt", article: "260713", note: "Embossed leather, cognac croco ⇄ black smooth", swatch: "#8a4a24" },
+      { name: "Classic Stitch Formal Belt", article: "260714", note: "Premium leather, dark brown ⇄ black smooth", swatch: "#2c1a10" },
+      { name: "Pebble Brown Formal Belt", article: "260715", note: "Grain leather, pebble brown ⇄ black smooth", swatch: "#5a3520" },
+      { name: "Executive Stripe Formal Belt", article: "260716", note: "Premium leather, dark brown ⇄ black smooth", swatch: "#1a1a1a" },
+      { name: "Jet Black Formal Belt", article: "260717", note: "Smooth leather, jet black ⇄ black smooth", swatch: "#0a0a0a" },
+      { name: "Midnight Blue Formal Belt", article: "260718", note: "Brushed leather, midnight blue ⇄ black smooth", swatch: "#0f1a3a" },
     ],
   },
   {
     id: "beaded",
     name: "Handmade Beaded Belts",
-    tagline:
-      "Tradition meets craftsmanship. Meticulously handcrafted with premium leather and intricate beadwork.",
+    tagline: "Where tradition meets craftsmanship. Our handmade beaded belts are meticulously crafted by skilled artisans using premium leather and intricate beadwork, creating timeless pieces that stand out with culture, color, and character.",
     slogan: "Handcrafted details, timeless style.",
     highlights: [
       "Handmade Beaded Craftsmanship",
@@ -154,20 +132,18 @@ const CATEGORIES: Category[] = [
       "OEM & Private Label",
     ],
     products: [
-      { name: "Desert Sunset Handmade Beaded Belt", article: "260719", note: "Bold floral tooled leather", swatch: "#c9622e" },
-      { name: "Turquoise Trail Handmade Beaded Belt", article: "260720", note: "Classic turquoise beadwork", swatch: "#2a8ea3" },
-      { name: "Violet Spirit Handmade Beaded Belt", article: "260721", swatch: "#5b2a6b" },
-      { name: "Navajo Pride Handmade Beaded Belt", article: "260722a", note: "Authentic genuine leather", swatch: "#8a3a2a" },
-      { name: "Earth Heritage Handmade Beaded Belt", article: "260722", swatch: "#6a4a2e" },
-      { name: "Western Beaded Belt", article: "260723", note: "Hand artisan beadwork with western touch", swatch: "#3d2116" },
-      { name: "Prairie Beaded Belt", article: "260724", swatch: "#a97142" },
+      { name: "Desert Sunset Beaded Belt", article: "260719", note: "Vibrant southwestern pattern, hand-tooled leather", swatch: "#c9622e" },
+      { name: "Turquoise Trail Beaded Belt", article: "260720", note: "Classic turquoise-inspired beadwork", swatch: "#2a8ea3" },
+      { name: "Violet Spirit Beaded Belt", article: "260721", note: "Bold floral tooled leather, vibrant beads", swatch: "#5b2a6b" },
+      { name: "Tribal Legacy Beaded Belt", article: "260722", note: "Colorful tribal design celebrating heritage", swatch: "#8a3a2a" },
+      { name: "Navajo Pride Beaded Belt", article: "260723", note: "Authentic geometric beadwork, western touch", swatch: "#6a4a2e" },
+      { name: "Earth Heritage Beaded Belt", article: "260724", note: "Earthy tones, rustic elegant artisan beadwork", swatch: "#a97142" },
     ],
   },
   {
     id: "tooled",
     name: "Hand-Tooled Belts",
-    tagline:
-      "Hand-tooled by skilled artisans — intricate designs, deep carvings and fine detailing built for timeless style.",
+    tagline: "Expertly hand-tooled by skilled artisans, our belts showcase intricate designs, deep carvings, and fine detailing. Made from premium leather, built for durability, style and timeless sophistication.",
     slogan: "Handcrafted art. Timeless impression.",
     highlights: [
       "Premium Genuine Leather",
@@ -176,19 +152,18 @@ const CATEGORIES: Category[] = [
       "MOQ: 5,000 pcs",
     ],
     products: [
-      { name: "Classic Brown Handcrafted Tooling Belt", article: "260725", note: "Perfect tooling with rich detail", swatch: "#5a341c" },
-      { name: "Forest Green Handcrafted Tooling Belt", article: "260726", note: "Deep carved leather design", swatch: "#274031" },
-      { name: "Sunflower Handcrafted Tooling Belt", article: "260727", note: "Bright sunflower tones, hand-painted", swatch: "#c99a1f" },
-      { name: "Western Tan Heritage Tooling Belt", article: "260728", swatch: "#a97142" },
-      { name: "Floral Midnight Navy Tooling Belt", article: "260729", note: "Elegant deep design", swatch: "#101f4a" },
-      { name: "Antique Cognac Tooling Belt", article: "260730", swatch: "#8a4a24" },
+      { name: "Classic Brown Tooling Belt", article: "260725", note: "Rich floral tooling, classic western appeal", swatch: "#5a341c" },
+      { name: "Forest Green Tooling Belt", article: "260726", note: "Deep carved leaf design, hand-painted details", swatch: "#274031" },
+      { name: "Sunflower Tooling Belt", article: "260727", note: "Bright sunflower tooling, bold western look", swatch: "#c99a1f" },
+      { name: "Western Tan Tooling Belt", article: "260728", note: "Traditional basket weave, timeless western style", swatch: "#a97142" },
+      { name: "Heritage Floral Tooling Belt", article: "260729", note: "Hand-tooled floral design, antique finish", swatch: "#8a4a24" },
+      { name: "Midnight Navy Tooling Belt", article: "260730", note: "Elegant deep tooling, premium finish", swatch: "#101f4a" },
     ],
   },
   {
     id: "braided",
     name: "Hand-Braided Belts",
-    tagline:
-      "Hand-braided by skilled artisans — superior craftsmanship, durability and timeless style.",
+    tagline: "Expertly hand-braided by skilled artisans, our belts showcase superior craftsmanship, durability and timeless style. Made from premium genuine leather, built for comfort, strength and everyday sophistication.",
     slogan: "Handcrafted art. Timeless impression.",
     highlights: [
       "Premium Genuine Leather",
@@ -197,19 +172,18 @@ const CATEGORIES: Category[] = [
       "OEM & Private Label",
     ],
     products: [
-      { name: "Navy Blue Hand-Braided Belt", article: "260731", note: "Classic navy braided belt", swatch: "#152244" },
-      { name: "Black & Tan Hand-Braided Belt", article: "260732", note: "Two-tone black & tan braid", swatch: "#1a1a1a" },
-      { name: "Black Hand-Braided Belt", article: "260734", swatch: "#0a0a0a" },
-      { name: "Tan Hand-Braided Belt", article: "260735", note: "Warm tan braided belt", swatch: "#a97142" },
-      { name: "Brown & Burgundy Hand-Braided Belt", article: "260733", note: "Rich brown & burgundy braid", swatch: "#5a2222" },
-      { name: "Blue & Brown Hand-Braided Belt", article: "260736", note: "Navy & brown braid", swatch: "#25324f" },
+      { name: "Navy Blue Braided Belt", article: "260731", note: "Metal buckle + alug, classic navy, sleek finish", swatch: "#152244" },
+      { name: "Black & Tan Braided Belt", article: "260732", note: "Metal buckle + alug, two-tone braid", swatch: "#1a1a1a" },
+      { name: "Brown & Burgundy Braided Belt", article: "260733", note: "Metal buckle + alug, rich premium appeal", swatch: "#5a2222" },
+      { name: "Black Braided Belt", article: "260734", note: "Metal buckle + alug, elegant versatile style", swatch: "#0a0a0a" },
+      { name: "Tan Braided Belt", article: "260735", note: "Metal buckle + alug, warm natural finish", swatch: "#a97142" },
+      { name: "Blue & Brown Braided Belt", article: "260736", note: "Metal buckle + alug, refined navy & brown look", swatch: "#25324f" },
     ],
   },
   {
     id: "polo",
     name: "Polo (Gaucho) Belts",
-    tagline:
-      "Inspired by Argentine gauchos — premium leather with vibrant hand-woven patterns for timeless everyday wear.",
+    tagline: "Inspired by the rich traditions of Argentine gauchos, our handcrafted polo belts combine premium genuine leather with vibrant woven patterns to create timeless accessories for everyday wear.",
     slogan: "Crafted with tradition. Designed for modern style.",
     highlights: [
       "Handcrafted by Skilled Artisans",
@@ -219,19 +193,18 @@ const CATEGORIES: Category[] = [
       "Worldwide Export",
     ],
     products: [
-      { name: "Sky Blue Classic Gaucho", article: "260737", note: "Black leather with sky-blue Gaucho pattern", swatch: "#4a9bd1" },
-      { name: "Heritage Cream Gaucho", article: "260738", note: "Cream & burgundy geometric design", swatch: "#d9c9a3" },
-      { name: "Patriot Red Gaucho", article: "260739", note: "Bold red, navy & white pattern", swatch: "#a12227" },
-      { name: "Monochrome Black Gaucho", article: "260740", note: "Minimal black-and-white design", swatch: "#111111" },
-      { name: "Desert Brown Gaucho", article: "260741", note: "Warm earthy tones", swatch: "#7a4b2e" },
-      { name: "Midnight Navy Gaucho", article: "260742", note: "Navy, white & red weaving", swatch: "#0d1a3a" },
+      { name: "Sky Blue Classic Gaucho", article: "260737", note: "Black leather with sky-blue woven Gaucho pattern", swatch: "#4a9bd1" },
+      { name: "Heritage Cream Gaucho", article: "260738", note: "Cream & burgundy geometric design, timeless appeal", swatch: "#d9c9a3" },
+      { name: "Patriot Red Gaucho", article: "260739", note: "Bold red, navy & white pattern, traditional polo style", swatch: "#a12227" },
+      { name: "Monochrome Black Gaucho", article: "260740", note: "Minimal black-and-white design, modern versatile", swatch: "#111111" },
+      { name: "Desert Brown Gaucho", article: "260741", note: "Warm earthy tones, authentic Gaucho weaving", swatch: "#7a4b2e" },
+      { name: "Midnight Navy Gaucho", article: "260742", note: "Navy, white & red pattern, contemporary style", swatch: "#0d1a3a" },
     ],
   },
   {
     id: "open-upper",
     name: "Safety Shoes — Open Upper",
-    tagline:
-      "Engineered for safety. Designed for comfort. Protection, durability and breathability for the working day.",
+    tagline: "Engineered for safety. Designed for comfort. Our open upper safety shoes provide the perfect balance of protection, durability and breathability.",
     highlights: [
       "Maximum Protection",
       "Breathable Comfort",
@@ -239,19 +212,18 @@ const CATEGORIES: Category[] = [
       "Custom Logo",
     ],
     products: [
-      { name: "Velcro Strap Model", article: "260743", swatch: "#1a1a1a" },
-      { name: "Industrial Lace Model", article: "260744", swatch: "#2a2a2a" },
-      { name: "Reinforced Toe Model", article: "260745", swatch: "#3a2a1a" },
-      { name: "Padded Tongue Model", article: "260746", swatch: "#5a3520" },
-      { name: "Heavy Duty Model", article: "260747", swatch: "#1a1a1a" },
-      { name: "Premium Stitch Model", article: "260748", swatch: "#0f1a3a" },
+      { name: "Black Red Stitch", article: "260743", note: "Breathable upper, steel toe, slip-resistant sole, oil & chemical resistant", swatch: "#1a1a1a" },
+      { name: "Navy White Stitch", article: "260744", note: "Breathable upper, steel toe, slip-resistant sole, oil & chemical resistant", swatch: "#152244" },
+      { name: "Navy Green Stitch", article: "260745", note: "Breathable upper, steel toe, slip-resistant sole, oil & chemical resistant", swatch: "#101f4a" },
+      { name: "Velcro Strap Model", article: "260746", note: "Breathable upper, steel toe, slip-resistant sole, oil & chemical resistant", swatch: "#2a2a2a" },
+      { name: "Padded Tongue Model", article: "260747", note: "Breathable upper, steel toe, slip-resistant sole, oil & chemical resistant", swatch: "#3a2a1a" },
+      { name: "Premium Stitch Model", article: "260748", note: "Breathable upper, steel toe, slip-resistant sole, oil & chemical resistant", swatch: "#0f1a3a" },
     ],
   },
   {
     id: "strobel-upper",
     name: "Safety Shoes — Strobel Upper",
-    tagline:
-      "Lightweight, flexible and durable Strobel construction — all-day comfort with maximum protection.",
+    tagline: "Engineered for Safety. Designed for Comfort. Our Strobel upper safety shoes offer a lightweight, flexible and durable construction for all-day comfort and maximum protection.",
     highlights: [
       "Slip-Resistant Sole",
       "Oil & Chemical Resistant",
@@ -259,20 +231,20 @@ const CATEGORIES: Category[] = [
       "Global Shipping",
     ],
     products: [
-      { name: "Black Red Model", article: "260749", swatch: "#1a1a1a" },
-      { name: "Navy Stitch Model", article: "260750", swatch: "#152244" },
-      { name: "Navy Plain Model", article: "260751", swatch: "#101f4a" },
-      { name: "Plain Model", article: "260752", swatch: "#2a2a2a" },
-      { name: "Sport Safety Model", article: "260753", swatch: "#3a3a3a" },
-      { name: "Executive Safety Model", article: "260754", swatch: "#1a1a2a" },
-      { name: "All-Terrain Model", article: "260756", swatch: "#3d2116" },
+      { name: "Grey Stripe Model", article: "260749", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#5a5a5a" },
+      { name: "Blue Mesh Model", article: "260750", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#1e3a8a" },
+      { name: "Black Green Model", article: "260751", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#064e3b" },
+      { name: "Navy Padded Model", article: "260752", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#1e3a8a" },
+      { name: "Black Red Model", article: "260753", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#7f1d1d" },
+      { name: "Navy Stitch Model", article: "260754", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#1e3a5f" },
+      { name: "Black Stitch Model", article: "260755", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#1a1a1d" },
+      { name: "Navy Plain Model", article: "260756", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#111e38" },
     ],
   },
   {
     id: "keychains",
     name: "Leather Key Chains",
-    tagline:
-      "Elegance, durability and practicality. Premium leather with precision stitching — perfect for personal use or promotional gifting.",
+    tagline: "Our leather key chains combine elegance, durability, and practicality. Crafted from premium leather with precision stitching and strong hardware, they are perfect for personal use or promotional gifting.",
     highlights: [
       "Genuine Leather Design",
       "Custom Logo & Branding",
@@ -280,11 +252,11 @@ const CATEGORIES: Category[] = [
       "Global Shipping Worldwide",
     ],
     products: [
-      { name: "Classic Leather Strap Key Chain", article: "KC-01", swatch: "#5a3520" },
-      { name: "Teardrop Key Chain", article: "KC-02", swatch: "#8a4a24" },
-      { name: "Loop Hook Key Chain", article: "KC-03", swatch: "#1a1a1a" },
-      { name: "Rectangle Key Chain", article: "KC-04", swatch: "#3d2116" },
-      { name: "Metal Plate Key Chain", article: "KC-05", swatch: "#152244" },
+      { name: "Metal Plate Key Chain", article: "260757", note: "Perfect for gifting", swatch: "#7a7a7a" },
+      { name: "Classic Leather Strap Key Chain", article: "260758", note: "Durable & strong", swatch: "#5a3520" },
+      { name: "Teardrop Key Chain", article: "260759", note: "Genuine leather", swatch: "#8a4a24" },
+      { name: "Loop Hook Key Chain", article: "260760", note: "Functional design", swatch: "#1a1a1a" },
+      { name: "Rectangle Key Chain", article: "260761", note: "Custom branding available", swatch: "#3d2116" },
     ],
   },
 ];
@@ -921,22 +893,23 @@ function Process() {
 
 function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string, categoryName: string) => void }) {
   const [group, setGroup] = useState<string>(PRODUCT_GROUPS[0].id);
+  const [activeTabMap, setActiveTabMap] = useState<Record<string, string>>({
+    belts: "casual",
+    shoes: "open-upper",
+    keychains: "keychains",
+  });
+  const [query, setQuery] = useState("");
+  const [selectedProduct, setSelectedProduct] = useState<{ product: any; categoryName: string } | null>(null);
+
   const activeGroup = PRODUCT_GROUPS.find((g) => g.id === group)!;
   const subCategories = activeGroup.categoryIds
     .map((id) => CATEGORIES.find((c) => c.id === id)!)
     .filter(Boolean);
-  const [active, setActive] = useState<string>(subCategories[0].id);
-  const [query, setQuery] = useState("");
-  const [selectedProduct, setSelectedProduct] = useState<{ product: any; categoryName: string } | null>(null);
+
+  const active = activeTabMap[group] ?? subCategories[0].id;
 
   const tabsRef = useRef<Array<HTMLButtonElement | null>>([]);
   const groupsRef = useRef<Array<HTMLButtonElement | null>>([]);
-
-  useEffect(() => {
-    setActive(subCategories[0].id);
-    setQuery("");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [group]);
 
   const cat = subCategories.find((c) => c.id === active) ?? subCategories[0];
   const q = query.trim().toLowerCase();
@@ -956,11 +929,11 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
 
   const handleGroupSelect = (groupId: string) => {
     setGroup(groupId);
-    const targetGroup = PRODUCT_GROUPS.find((g) => g.id === groupId);
-    if (targetGroup && targetGroup.categoryIds.length > 0) {
-      setActive(targetGroup.categoryIds[0]);
-    }
     setQuery("");
+  };
+
+  const handleTabSelect = (tabId: string) => {
+    setActiveTabMap((prev) => ({ ...prev, [group]: tabId }));
   };
 
   const handleGroupKey = (e: React.KeyboardEvent, idx: number) => {
@@ -985,7 +958,7 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
       : e.key === "ArrowLeft" ? (idx - 1 + last + 1) % (last + 1)
       : e.key === "Home" ? 0 : last;
     const target = subCategories[next];
-    setActive(target.id);
+    handleTabSelect(target.id);
     tabsRef.current[next]?.focus();
   };
 
@@ -1125,7 +1098,7 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
                   aria-selected={isActive}
                   aria-controls={`subpanel-${c.id}`}
                   tabIndex={0}
-                  onClick={() => setActive(c.id)}
+                  onClick={() => handleTabSelect(c.id)}
                   onKeyDown={(e) => handleTabKey(e, i)}
                   className={
                     "min-h-11 shrink-0 cursor-pointer touch-manipulation px-4 py-2 text-xs font-semibold uppercase tracking-[0.15em] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--navy)] focus-visible:ring-offset-2 focus-visible:ring-offset-white " +
@@ -1476,7 +1449,7 @@ function ContactSection() {
               </p>
             )}
             {status === "error" && (
-              <p className="text-sm text-red-300">{errMsg || "Something went wrong. Please try again."}</p>
+              <p className="text-sm text-red-300">Something went wrong. Please try again.</p>
             )}
           </form>
         </div>
@@ -1650,3 +1623,5 @@ function Index() {
     </div>
   );
 }
+
+export default Index;
