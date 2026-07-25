@@ -509,7 +509,7 @@ function Nav() {
     <header className="fixed inset-x-0 top-0 z-50 bg-[#011844] border-b border-white/10">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="#top" className="flex items-center gap-2.5 text-[var(--cream)]">
-          <img src={logoImage} alt="Louis Exim logo" className="h-9 w-auto" />
+          <img src={logoImage} alt="Louis Exim logo" className="h-12 w-auto" />
           <span className="font-display text-xl font-bold tracking-wide">LOUIS EXIM</span>
         </a>
 
@@ -1462,7 +1462,7 @@ function Footer() {
     <footer className="bg-black py-10 text-[var(--cream)]/70">
       <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 md:flex-row">
         <div className="flex items-center gap-3">
-          <img src={logoImage} alt="Louis Exim logo" className="h-8 w-auto" />
+          <img src={logoImage} alt="Louis Exim logo" className="h-10 w-auto" />
           <span className="font-display text-lg text-[var(--cream)]">LOUIS EXIM</span>
         </div>
         <p className="text-xs uppercase tracking-[0.25em] text-[var(--tan)]">
