@@ -47,7 +47,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import heroImage from "../../hero-leather.jpg";
-import logoImage from "../../logo.png";
+import logoImage from "../../louis exim silver log-Photoroom.png";
 
 // Casual Belts Images
 import imgCasual260701 from "../../CASUAL BELTS/ARTICLE NO. 260701.jpeg";
