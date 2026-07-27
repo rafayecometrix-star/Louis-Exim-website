@@ -49,11 +49,65 @@ import {
 import heroImage from "../../hero-leather.jpg";
 import logoImage from "../../logo.png";
 
+// Casual Belts Images
+import imgCasual260701 from "../../CASUAL BELTS/ARTICLE NO. 260701.jpeg";
+import imgCasual260702 from "../../CASUAL BELTS/ARTICLE NO. 260702.jpeg";
+import imgCasual260703 from "../../CASUAL BELTS/ARTICLE NO. 260703.jpeg";
+import imgCasual260706 from "../../CASUAL BELTS/ARTICLE NO. 260706.jpeg";
+
+// Formal Belts Images
+import imgFormal260713 from "../../FORMAL BELTS/ARTICLE NO. 2603713.jpeg";
+import imgFormal260714 from "../../FORMAL BELTS/ARTICLE NO. 2603714.jpeg";
+import imgFormal260715 from "../../FORMAL BELTS/ARTICLE NO. 2603715.jpeg";
+import imgFormal260717 from "../../FORMAL BELTS/ARTICLE NO. 2603717.jpeg";
+
+// Handmade Beaded Belts Images
+import imgBeaded260719 from "../../HANDMADE BEADED BELTS/ARTICLE NO. 260719.jpeg";
+import imgBeaded260720 from "../../HANDMADE BEADED BELTS/ARTICLE NO. 260720.jpeg";
+import imgBeaded260721 from "../../HANDMADE BEADED BELTS/ARTICLE NO. 260721.jpeg";
+import imgBeaded260722 from "../../HANDMADE BEADED BELTS/ARTICLE NO. 260722.jpeg";
+
+// Handcrafted Tooling Belts Images
+import imgTooling260725 from "../../HANDCRAFTED TOOLING BELTS/ARTICLE NO. 260725.jpeg";
+import imgTooling260726 from "../../HANDCRAFTED TOOLING BELTS/ARTICLE NO. 260726.jpeg";
+import imgTooling260727 from "../../HANDCRAFTED TOOLING BELTS/ARTICLE NO. 260727.jpeg";
+import imgTooling260729 from "../../HANDCRAFTED TOOLING BELTS/ARTICLE NO. 260729.jpeg";
+import imgTooling260730 from "../../HANDCRAFTED TOOLING BELTS/ARTICLE NO. 260730.jpeg";
+
+// Hand Made Braided Belts Images
+import imgBraided260731 from "../../HAND MADE BRAIDED BELTS/ARTICLE NO. 260731.jpeg";
+import imgBraided260732 from "../../HAND MADE BRAIDED BELTS/ARTICLE NO. 260732.jpeg";
+import imgBraided260735 from "../../HAND MADE BRAIDED BELTS/ARTICLE NO. 260735.jpeg";
+
+// Argentina Polo Belts Images
+import imgPolo260737 from "../../ARGENTINA POLO BELTS/ARTICLE NO. 260737.jpeg";
+import imgPolo260738 from "../../ARGENTINA POLO BELTS/ARTICLE NO. 260738.jpeg";
+import imgPolo260739 from "../../ARGENTINA POLO BELTS/ARTICLE NO. 260739.jpeg";
+
+// Open Upper Safety Shoes Images
+import imgOpen260743 from "../../open upper/ART NO. 260743.jpeg";
+import imgOpen260744 from "../../open upper/ART NO. 200744.jpeg";
+import imgOpen260745 from "../../open upper/ART NO. 200745.jpeg";
+import imgOpen260747 from "../../open upper/ART NO. 200747.jpeg";
+
+// Strobel Upper Safety Shoes Images
+import imgStrobel260749 from "../../STROBEL UPPER/ART NO. 260749.jpeg";
+import imgStrobel260750 from "../../STROBEL UPPER/ART NO. 260750.jpeg";
+import imgStrobel260751 from "../../STROBEL UPPER/ART NO. 260751.jpeg";
+import imgStrobel260755 from "../../STROBEL UPPER/ART NO. 260755.jpeg";
+
+// Key Chains Images
+import imgKeychain260757 from "../../Key chain/ART NO. 260757.jpeg";
+import imgKeychain260758 from "../../Key chain/ART NO. 260758.jpeg";
+import imgKeychain260759 from "../../Key chain/ART NO. 260759.jpeg";
+import imgKeychain260760 from "../../Key chain/ART NO. 260760.jpeg";
+import imgKeychain260761 from "../../Key chain/ART NO. 260761.jpeg";
+
 /* SEO meta tags are in index.html */
 
 /* ---------------- Product data ---------------- */
 
-type Product = { name: string; article: string; note?: string; swatch: string };
+type Product = { name: string; article: string; note?: string; swatch: string; image?: string };
 type Category = {
   id: string;
   name: string;
@@ -70,12 +124,10 @@ const CATEGORIES: Category[] = [
     tagline:
       "Discover the perfect blend of style, comfort and durability with our casual belts collection. Crafted from premium quality leather, each belt is designed to complement your everyday look effortlessly.",
     products: [
-      { name: "Navy Blue Casual Belt", article: "260701", note: "Textured grain finish, stylish modern casual look", swatch: "#1e2a4a" },
-      { name: "Burgundy Casual Belt", article: "260702", note: "Rich burgundy shade, bold touch for casual style", swatch: "#6b1f2a" },
-      { name: "Brown Casual Belt", article: "260703", note: "Classic brown, timeless look for everyday wear", swatch: "#a97142" },
-      { name: "Black Textured Casual Belt", article: "260704", note: "Textured black, rugged versatile everyday look", swatch: "#1a1a1a" },
-      { name: "Black Matte Casual Belt", article: "260705", note: "Matte finish, clean minimal casual appearance", swatch: "#2c2c2c" },
-      { name: "Wine Red Casual Belt", article: "260706", note: "Elegant wine red, elevates everyday casual outfits", swatch: "#58181f" },
+      { name: "Brown Casual Belt", article: "260701", note: "Classic brown, timeless look for everyday wear", swatch: "#a97142", image: imgCasual260701 },
+      { name: "Navy Blue Casual Belt", article: "260702", note: "Textured grain finish, stylish modern casual look", swatch: "#1e2a4a", image: imgCasual260702 },
+      { name: "Burgundy Smooth Leather Belt", article: "260703", note: "Rich burgundy shade, bold touch for casual style", swatch: "#6b1f2a", image: imgCasual260703 },
+      { name: "Wine Red Casual Belt", article: "260706", note: "Elegant wine red, elevates everyday casual outfits", swatch: "#58181f", image: imgCasual260706 },
     ],
   },
   {
@@ -112,12 +164,10 @@ const CATEGORIES: Category[] = [
       "Gift Packaging Available",
     ],
     products: [
-      { name: "Cognac Croco Formal Belt", article: "260713", note: "Embossed leather, cognac croco ⇄ black smooth", swatch: "#8a4a24" },
-      { name: "Classic Stitch Formal Belt", article: "260714", note: "Premium leather, dark brown ⇄ black smooth", swatch: "#2c1a10" },
-      { name: "Pebble Brown Formal Belt", article: "260715", note: "Grain leather, pebble brown ⇄ black smooth", swatch: "#5a3520" },
-      { name: "Executive Stripe Formal Belt", article: "260716", note: "Premium leather, dark brown ⇄ black smooth", swatch: "#1a1a1a" },
-      { name: "Jet Black Formal Belt", article: "260717", note: "Smooth leather, jet black ⇄ black smooth", swatch: "#0a0a0a" },
-      { name: "Midnight Blue Formal Belt", article: "260718", note: "Brushed leather, midnight blue ⇄ black smooth", swatch: "#0f1a3a" },
+      { name: "Cognac Croco Formal Belt", article: "260713", note: "Embossed leather, cognac croco ⇄ black smooth", swatch: "#8a4a24", image: imgFormal260713 },
+      { name: "Classic Stitch Formal Belt", article: "260714", note: "Premium leather, dark brown ⇄ black smooth", swatch: "#2c1a10", image: imgFormal260714 },
+      { name: "Pebble Brown Formal Belt", article: "260715", note: "Grain leather, pebble brown ⇄ black smooth", swatch: "#5a3520", image: imgFormal260715 },
+      { name: "Jet Black Formal Belt", article: "260717", note: "Smooth leather, jet black ⇄ black smooth", swatch: "#0a0a0a", image: imgFormal260717 },
     ],
   },
   {
@@ -133,12 +183,10 @@ const CATEGORIES: Category[] = [
       "OEM & Private Label",
     ],
     products: [
-      { name: "Desert Sunset Beaded Belt", article: "260719", note: "Vibrant southwestern pattern, hand-tooled leather", swatch: "#c9622e" },
-      { name: "Turquoise Trail Beaded Belt", article: "260720", note: "Classic turquoise-inspired beadwork", swatch: "#2a8ea3" },
-      { name: "Violet Spirit Beaded Belt", article: "260721", note: "Bold floral tooled leather, vibrant beads", swatch: "#5b2a6b" },
-      { name: "Tribal Legacy Beaded Belt", article: "260722", note: "Colorful tribal design celebrating heritage", swatch: "#8a3a2a" },
-      { name: "Navajo Pride Beaded Belt", article: "260723", note: "Authentic geometric beadwork, western touch", swatch: "#6a4a2e" },
-      { name: "Earth Heritage Beaded Belt", article: "260724", note: "Earthy tones, rustic elegant artisan beadwork", swatch: "#a97142" },
+      { name: "Desert Sunset Beaded Belt", article: "260719", note: "Vibrant southwestern pattern, hand-tooled leather", swatch: "#c9622e", image: imgBeaded260719 },
+      { name: "Turquoise Trail Beaded Belt", article: "260720", note: "Classic turquoise-inspired beadwork", swatch: "#2a8ea3", image: imgBeaded260720 },
+      { name: "Violet Spirit Beaded Belt", article: "260721", note: "Bold floral tooled leather, vibrant beads", swatch: "#5b2a6b", image: imgBeaded260721 },
+      { name: "Tribal Legacy Beaded Belt", article: "260722", note: "Colorful tribal design celebrating heritage", swatch: "#8a3a2a", image: imgBeaded260722 },
     ],
   },
   {
@@ -153,12 +201,11 @@ const CATEGORIES: Category[] = [
       "MOQ: 5,000 pcs",
     ],
     products: [
-      { name: "Classic Brown Tooling Belt", article: "260725", note: "Rich floral tooling, classic western appeal", swatch: "#5a341c" },
-      { name: "Forest Green Tooling Belt", article: "260726", note: "Deep carved leaf design, hand-painted details", swatch: "#274031" },
-      { name: "Sunflower Tooling Belt", article: "260727", note: "Bright sunflower tooling, bold western look", swatch: "#c99a1f" },
-      { name: "Western Tan Tooling Belt", article: "260728", note: "Traditional basket weave, timeless western style", swatch: "#a97142" },
-      { name: "Heritage Floral Tooling Belt", article: "260729", note: "Hand-tooled floral design, antique finish", swatch: "#8a4a24" },
-      { name: "Midnight Navy Tooling Belt", article: "260730", note: "Elegant deep tooling, premium finish", swatch: "#101f4a" },
+      { name: "Classic Brown Tooling Belt", article: "260725", note: "Rich floral tooling, classic western appeal", swatch: "#5a341c", image: imgTooling260725 },
+      { name: "Forest Green Tooling Belt", article: "260726", note: "Deep carved leaf design, hand-painted details", swatch: "#274031", image: imgTooling260726 },
+      { name: "Sunflower Tooling Belt", article: "260727", note: "Bright sunflower tooling, bold western look", swatch: "#c99a1f", image: imgTooling260727 },
+      { name: "Heritage Floral Tooling Belt", article: "260729", note: "Hand-tooled floral design, antique finish", swatch: "#8a4a24", image: imgTooling260729 },
+      { name: "Midnight Navy Tooling Belt", article: "260730", note: "Elegant deep tooling, premium finish", swatch: "#101f4a", image: imgTooling260730 },
     ],
   },
   {
@@ -173,12 +220,9 @@ const CATEGORIES: Category[] = [
       "OEM & Private Label",
     ],
     products: [
-      { name: "Navy Blue Braided Belt", article: "260731", note: "Metal buckle + alug, classic navy, sleek finish", swatch: "#152244" },
-      { name: "Black & Tan Braided Belt", article: "260732", note: "Metal buckle + alug, two-tone braid", swatch: "#1a1a1a" },
-      { name: "Brown & Burgundy Braided Belt", article: "260733", note: "Metal buckle + alug, rich premium appeal", swatch: "#5a2222" },
-      { name: "Black Braided Belt", article: "260734", note: "Metal buckle + alug, elegant versatile style", swatch: "#0a0a0a" },
-      { name: "Tan Braided Belt", article: "260735", note: "Metal buckle + alug, warm natural finish", swatch: "#a97142" },
-      { name: "Blue & Brown Braided Belt", article: "260736", note: "Metal buckle + alug, refined navy & brown look", swatch: "#25324f" },
+      { name: "Navy Blue Braided Belt", article: "260731", note: "Metal buckle + alug, classic navy, sleek finish", swatch: "#152244", image: imgBraided260731 },
+      { name: "Black & Tan Braided Belt", article: "260732", note: "Metal buckle + alug, two-tone braid", swatch: "#1a1a1a", image: imgBraided260732 },
+      { name: "Tan Braided Belt", article: "260735", note: "Metal buckle + alug, warm natural finish", swatch: "#a97142", image: imgBraided260735 },
     ],
   },
   {
@@ -194,12 +238,9 @@ const CATEGORIES: Category[] = [
       "Worldwide Export",
     ],
     products: [
-      { name: "Sky Blue Classic Gaucho", article: "260737", note: "Black leather with sky-blue woven Gaucho pattern", swatch: "#4a9bd1" },
-      { name: "Heritage Cream Gaucho", article: "260738", note: "Cream & burgundy geometric design, timeless appeal", swatch: "#d9c9a3" },
-      { name: "Patriot Red Gaucho", article: "260739", note: "Bold red, navy & white pattern, traditional polo style", swatch: "#a12227" },
-      { name: "Monochrome Black Gaucho", article: "260740", note: "Minimal black-and-white design, modern versatile", swatch: "#111111" },
-      { name: "Desert Brown Gaucho", article: "260741", note: "Warm earthy tones, authentic Gaucho weaving", swatch: "#7a4b2e" },
-      { name: "Midnight Navy Gaucho", article: "260742", note: "Navy, white & red pattern, contemporary style", swatch: "#0d1a3a" },
+      { name: "Sky Blue Classic Gaucho", article: "260737", note: "Black leather with sky-blue woven Gaucho pattern", swatch: "#4a9bd1", image: imgPolo260737 },
+      { name: "Heritage Cream Gaucho", article: "260738", note: "Cream & burgundy geometric design, timeless appeal", swatch: "#d9c9a3", image: imgPolo260738 },
+      { name: "Patriot Red Gaucho", article: "260739", note: "Bold red, navy & white pattern, traditional polo style", swatch: "#a12227", image: imgPolo260739 },
     ],
   },
   {
@@ -213,12 +254,10 @@ const CATEGORIES: Category[] = [
       "Custom Logo",
     ],
     products: [
-      { name: "Black Red Stitch", article: "260743", note: "Breathable upper, steel toe, slip-resistant sole, oil & chemical resistant", swatch: "#1a1a1a" },
-      { name: "Navy White Stitch", article: "260744", note: "Breathable upper, steel toe, slip-resistant sole, oil & chemical resistant", swatch: "#152244" },
-      { name: "Navy Green Stitch", article: "260745", note: "Breathable upper, steel toe, slip-resistant sole, oil & chemical resistant", swatch: "#101f4a" },
-      { name: "Velcro Strap Model", article: "260746", note: "Breathable upper, steel toe, slip-resistant sole, oil & chemical resistant", swatch: "#2a2a2a" },
-      { name: "Padded Tongue Model", article: "260747", note: "Breathable upper, steel toe, slip-resistant sole, oil & chemical resistant", swatch: "#3a2a1a" },
-      { name: "Premium Stitch Model", article: "260748", note: "Breathable upper, steel toe, slip-resistant sole, oil & chemical resistant", swatch: "#0f1a3a" },
+      { name: "Black Red Stitch", article: "260743", note: "Breathable upper, steel toe, slip-resistant sole, oil & chemical resistant", swatch: "#1a1a1a", image: imgOpen260743 },
+      { name: "Navy White Stitch", article: "260744", note: "Breathable upper, steel toe, slip-resistant sole, oil & chemical resistant", swatch: "#152244", image: imgOpen260744 },
+      { name: "Navy Green Stitch", article: "260745", note: "Breathable upper, steel toe, slip-resistant sole, oil & chemical resistant", swatch: "#101f4a", image: imgOpen260745 },
+      { name: "Padded Tongue Model", article: "260747", note: "Breathable upper, steel toe, slip-resistant sole, oil & chemical resistant", swatch: "#3a2a1a", image: imgOpen260747 },
     ],
   },
   {
@@ -232,14 +271,10 @@ const CATEGORIES: Category[] = [
       "Global Shipping",
     ],
     products: [
-      { name: "Grey Stripe Model", article: "260749", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#5a5a5a" },
-      { name: "Blue Mesh Model", article: "260750", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#1e3a8a" },
-      { name: "Black Green Model", article: "260751", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#064e3b" },
-      { name: "Navy Padded Model", article: "260752", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#1e3a8a" },
-      { name: "Black Red Model", article: "260753", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#7f1d1d" },
-      { name: "Navy Stitch Model", article: "260754", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#1e3a5f" },
-      { name: "Black Stitch Model", article: "260755", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#1a1a1d" },
-      { name: "Navy Plain Model", article: "260756", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#111e38" },
+      { name: "Grey Stripe Model", article: "260749", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#5a5a5a", image: imgStrobel260749 },
+      { name: "Blue Mesh Model", article: "260750", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#1e3a8a", image: imgStrobel260750 },
+      { name: "Black Green Model", article: "260751", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#064e3b", image: imgStrobel260751 },
+      { name: "Black Stitch Model", article: "260755", note: "Lightweight construction, steel toe, slip-resistant, oil & chemical resistant", swatch: "#1a1a1d", image: imgStrobel260755 },
     ],
   },
   {
@@ -253,11 +288,11 @@ const CATEGORIES: Category[] = [
       "Global Shipping Worldwide",
     ],
     products: [
-      { name: "Metal Plate Key Chain", article: "260757", note: "Perfect for gifting", swatch: "#7a7a7a" },
-      { name: "Classic Leather Strap Key Chain", article: "260758", note: "Durable & strong", swatch: "#5a3520" },
-      { name: "Teardrop Key Chain", article: "260759", note: "Genuine leather", swatch: "#8a4a24" },
-      { name: "Loop Hook Key Chain", article: "260760", note: "Functional design", swatch: "#1a1a1a" },
-      { name: "Rectangle Key Chain", article: "260761", note: "Custom branding available", swatch: "#3d2116" },
+      { name: "Metal Plate Key Chain", article: "260757", note: "Perfect for gifting", swatch: "#7a7a7a", image: imgKeychain260757 },
+      { name: "Classic Leather Strap Key Chain", article: "260758", note: "Durable & strong", swatch: "#5a3520", image: imgKeychain260758 },
+      { name: "Teardrop Key Chain", article: "260759", note: "Genuine leather", swatch: "#8a4a24", image: imgKeychain260759 },
+      { name: "Loop Hook Key Chain", article: "260760", note: "Functional design", swatch: "#1a1a1a", image: imgKeychain260760 },
+      { name: "Rectangle Key Chain", article: "260761", note: "Custom branding available", swatch: "#3d2116", image: imgKeychain260761 },
     ],
   },
 ];
@@ -535,7 +570,22 @@ function KeychainSwatch({ color }: { color: string }) {
   );
 }
 
-function ProductVisual({ categoryId, color }: { categoryId: string; color: string }) {
+function ProductVisual({ categoryId, color, image }: { categoryId: string; color: string; image?: string }) {
+  if (image) {
+    return (
+      <div className="group relative flex aspect-square w-full items-center justify-center overflow-hidden bg-white p-2 transition-all duration-300">
+        <img
+          src={image}
+          alt=""
+          loading="lazy"
+          className="h-full w-full object-contain object-center transition-transform duration-300 group-hover:scale-105"
+        />
+        <div className="pointer-events-none absolute bottom-2 right-2 flex items-center gap-1 rounded-full px-2 py-0.5 text-[9px] font-semibold tracking-wider backdrop-blur opacity-90 group-hover:opacity-100" style={{ background: 'rgba(1,24,68,0.8)', color: '#c2b5ad' }}>
+          <Eye className="h-3 w-3" /> Quick View
+        </div>
+      </div>
+    );
+  }
   if (categoryId === "open-upper" || categoryId === "strobel-upper") return <ShoeSwatch color={color} />;
   if (categoryId === "keychains") return <KeychainSwatch color={color} />;
   return <BeltSwatch color={color} />;
@@ -1203,7 +1253,7 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
                     onClick={() => setSelectedProduct({ product: p, categoryName: p._categoryName })}
                     className="group cursor-pointer border border-[var(--border)] bg-[var(--cream)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--navy)] hover:shadow-xl"
                   >
-                    <ProductVisual categoryId={p._categoryId} color={p.swatch} />
+                    <ProductVisual categoryId={p._categoryId} color={p.swatch} image={p.image} />
                     <div className="border-t border-[var(--border)] p-4">
                       <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--ink)]/50">
                         {p._categoryName}
@@ -1245,7 +1295,7 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
               </ul>
             )}
           </div>
-
+ 
           <div className="md:col-span-8">
             <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
               {cat.products.map((p) => (
@@ -1254,7 +1304,7 @@ function Products({ onSelectInquiry }: { onSelectInquiry?: (productName: string,
                   onClick={() => setSelectedProduct({ product: { ...p, _categoryId: cat.id }, categoryName: cat.name })}
                   className="group cursor-pointer border border-[var(--border)] bg-[var(--cream)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--navy)] hover:shadow-xl"
                 >
-                  <ProductVisual categoryId={cat.id} color={p.swatch} />
+                  <ProductVisual categoryId={cat.id} color={p.swatch} image={p.image} />
                   <div className="border-t border-[var(--border)] p-4">
                     <div className="flex items-center justify-between gap-2">
                       <h4 className="font-display text-base leading-tight">{p.name}</h4>
@@ -1569,7 +1619,7 @@ function ProductModal({ product, categoryName, onClose, onSelectInquiry }: Produ
           {/* Visual Swatch Side */}
           <div className="md:col-span-5 bg-[var(--tan-soft)] flex items-center justify-center p-6 border-b md:border-b-0 md:border-r border-[var(--border)]">
             <div className="w-full">
-              <ProductVisual categoryId={product._categoryId || "casual"} color={product.swatch} />
+              <ProductVisual categoryId={product._categoryId || "casual"} color={product.swatch} image={product.image} />
               <div className="mt-4 text-center">
                 <span className="inline-block px-3 py-1 bg-[var(--navy)] text-[var(--tan)] text-[10px] font-semibold tracking-widest uppercase rounded-full">
                   Article #{product.article}
