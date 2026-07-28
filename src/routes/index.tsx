@@ -603,7 +603,7 @@ function KeychainSwatch({ color }: { color: string }) {
   );
 }
 
-function ProductVisual({ categoryId, color, image }: { categoryId: string; color: string; image?: string }) {
+function ProductVisual({ categoryId, color, image, isModal = false }: { categoryId: string; color: string; image?: string; isModal?: boolean }) {
   if (image) {
     return (
       <div className="group relative flex aspect-square w-full items-center justify-center overflow-hidden bg-white p-2 transition-all duration-300">
@@ -611,11 +611,22 @@ function ProductVisual({ categoryId, color, image }: { categoryId: string; color
           src={image}
           alt=""
           loading="lazy"
-          className="h-full w-full object-contain object-center transition-transform duration-300 group-hover:scale-105"
+          className="h-full w-full object-contain object-center transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="pointer-events-none absolute bottom-2 right-2 flex items-center gap-1 rounded-full px-2 py-0.5 text-[9px] font-semibold tracking-wider backdrop-blur opacity-90 group-hover:opacity-100" style={{ background: 'rgba(1,24,68,0.8)', color: '#c2b5ad' }}>
-          <Eye className="h-3 w-3" /> Quick View
-        </div>
+        {isModal ? (
+          <>
+            {/* Subtle bottom shadow overlay to ensure text legibility */}
+            <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" />
+            {/* Underlined "Click to Zoom" link button at the bottom-right corner */}
+            <span className="absolute right-3 bottom-3 text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--tan)] underline decoration-[var(--tan)] underline-offset-4 transition-colors duration-300 group-hover:text-white z-10">
+              Click to Zoom
+            </span>
+          </>
+        ) : (
+          <div className="pointer-events-none absolute bottom-2 right-2 flex items-center gap-1 rounded-full px-2 py-0.5 text-[9px] font-semibold tracking-wider backdrop-blur opacity-90 group-hover:opacity-100" style={{ background: 'rgba(1,24,68,0.8)', color: '#c2b5ad' }}>
+            <Eye className="h-3 w-3" /> Quick View
+          </div>
+        )}
       </div>
     );
   }
@@ -1788,6 +1799,8 @@ type ProductModalProps = {
 function ProductModal({ product, categoryName, onClose, onSelectInquiry }: ProductModalProps) {
   if (!product) return null;
 
+  const [isZoomed, setIsZoomed] = useState(false);
+
   const whatsappMsg = encodeURIComponent(
     `Hello Louis Exim, I am interested in inquiring about ${product.name} (Article #${product.article}). Please share pricing and export details.`
   );
@@ -1809,7 +1822,16 @@ function ProductModal({ product, categoryName, onClose, onSelectInquiry }: Produ
           {/* Visual Swatch Side */}
           <div className="md:col-span-5 bg-[var(--tan-soft)] flex items-center justify-center p-6 border-b md:border-b-0 md:border-r border-[var(--border)]">
             <div className="w-full">
-              <ProductVisual categoryId={product._categoryId || "casual"} color={product.swatch} image={product.image} />
+              {product.image ? (
+                <div
+                  className="group relative cursor-pointer"
+                  onClick={() => setIsZoomed(true)}
+                >
+                  <ProductVisual categoryId={product._categoryId || "casual"} color={product.swatch} image={product.image} isModal={true} />
+                </div>
+              ) : (
+                <ProductVisual categoryId={product._categoryId || "casual"} color={product.swatch} image={product.image} />
+              )}
               <div className="mt-4 text-center">
                 <span className="inline-block px-3 py-1 bg-[var(--navy)] text-[var(--tan)] text-[10px] font-semibold tracking-widest uppercase rounded-full">
                   Article #{product.article}
@@ -1882,6 +1904,54 @@ function ProductModal({ product, categoryName, onClose, onSelectInquiry }: Produ
           </div>
         </div>
       </div>
+
+      {/* Full-screen Lightbox Modal for Product Image */}
+      {isZoomed && product.image && (
+        <div
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center p-4 md:p-8 backdrop-blur-md"
+          style={{ backgroundColor: 'rgba(0,0,0,0.95)' }}
+          onClick={() => setIsZoomed(false)}
+        >
+          {/* Close Button */}
+          <button
+            type="button"
+            onClick={() => setIsZoomed(false)}
+            className="absolute right-6 top-6 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--navy)] text-[var(--tan)] hover:bg-[var(--cream)] hover:text-[var(--navy)] transition shadow-lg"
+            aria-label="Close product lightbox"
+          >
+            <X className="h-6 w-6" />
+          </button>
+
+          <div
+            className="relative max-w-4xl w-full flex flex-col items-center justify-center gap-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Image Container - Displays complete uncropped product image */}
+            <div className="w-full max-h-[80vh] flex items-center justify-center overflow-hidden">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="max-w-full max-h-[80vh] object-contain shadow-2xl border border-white/10"
+              />
+            </div>
+
+            {/* Product Info */}
+            <div className="text-center text-white max-w-2xl px-4 mt-2">
+              <h3 className="font-display text-xl md:text-2xl font-bold text-[var(--tan)]">
+                {product.name}
+              </h3>
+              <p className="text-xs uppercase tracking-widest text-gray-400 mt-1">
+                Article #{product.article}
+              </p>
+              {product.note && (
+                <p className="mt-2 text-sm text-gray-300 italic">
+                  "{product.note}"
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
