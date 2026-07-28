@@ -50,16 +50,28 @@ import heroImage from "../../hero-leather.jpg";
 import logoImage from "../../louis exim silver log-Photoroom.png";
 
 // Casual Belts Images
-import imgCasual260701 from "../../CASUAL BELTS/ARTICLE NO. 260701.jpeg";
-import imgCasual260702 from "../../CASUAL BELTS/ARTICLE NO. 260702.jpeg";
-import imgCasual260703 from "../../CASUAL BELTS/ARTICLE NO. 260703.jpeg";
-import imgCasual260706 from "../../CASUAL BELTS/ARTICLE NO. 260706.jpeg";
+import imgCasual260701 from "../../CASUAL BELTS/new 1.jpeg";
+import imgCasual260702 from "../../CASUAL BELTS/new 2.jpeg";
+import imgCasual260703 from "../../CASUAL BELTS/new 3.jpeg";
+import imgCasual260706 from "../../CASUAL BELTS/new 4.jpeg";
+
+// Formal Reversible Belts Images
+import imgReversible260707 from "../../Formal reversible belt collection/Art. 260707.jpeg";
+import imgReversible260708 from "../../Formal reversible belt collection/Art. 260708.jpeg";
+import imgReversible260709 from "../../Formal reversible belt collection/Art. 260709.jpeg";
+import imgReversible260710 from "../../Formal reversible belt collection/Art. 260710.jpeg";
 
 // Formal Belts Images
-import imgFormal260713 from "../../FORMAL BELTS/ARTICLE NO. 2603713.jpeg";
-import imgFormal260714 from "../../FORMAL BELTS/ARTICLE NO. 2603714.jpeg";
-import imgFormal260715 from "../../FORMAL BELTS/ARTICLE NO. 2603715.jpeg";
+import imgFormal260713 from "../../FORMAL BELTS/new 1 .jpeg";
+import imgFormal260714 from "../../FORMAL BELTS/new 2.jpeg";
+import imgFormal260715 from "../../FORMAL BELTS/new 3.jpeg";
 import imgFormal260717 from "../../FORMAL BELTS/ARTICLE NO. 2603717.jpeg";
+
+// P2C Embossed Belts Images
+import imgP2C260762 from "../../P2C EMBOSSED BELT COLLECTION/Article No. 260762.jpeg";
+import imgP2C260763 from "../../P2C EMBOSSED BELT COLLECTION/Article No. 260763.jpeg";
+import imgP2C260764 from "../../P2C EMBOSSED BELT COLLECTION/Article No. 260764.jpeg";
+import imgP2C260765 from "../../P2C EMBOSSED BELT COLLECTION/Article No. 260765.jpeg";
 
 // Handmade Beaded Belts Images
 import imgBeaded260719 from "../../HANDMADE BEADED BELTS/ARTICLE NO. 260719.jpeg";
@@ -124,10 +136,10 @@ const CATEGORIES: Category[] = [
     tagline:
       "Discover the perfect blend of style, comfort and durability with our casual belts collection. Crafted from premium quality leather, each belt is designed to complement your everyday look effortlessly.",
     products: [
-      { name: "Brown Casual Belt", article: "260701", note: "Classic brown, timeless look for everyday wear", swatch: "#a97142", image: imgCasual260701 },
-      { name: "Navy Blue Casual Belt", article: "260702", note: "Textured grain finish, stylish modern casual look", swatch: "#1e2a4a", image: imgCasual260702 },
-      { name: "Burgundy Smooth Leather Belt", article: "260703", note: "Rich burgundy shade, bold touch for casual style", swatch: "#6b1f2a", image: imgCasual260703 },
-      { name: "Wine Red Casual Belt", article: "260706", note: "Elegant wine red, elevates everyday casual outfits", swatch: "#58181f", image: imgCasual260706 },
+      { name: "Dark Brown Contrast Stitch Casual Belt", article: "260701", note: "Dark chocolate brown smooth leather, dual contrast orange/tan stitching", swatch: "#3b1e12", image: imgCasual260701 },
+      { name: "Black Pebble Grain Casual Belt", article: "260702", note: "Black pebble grain textured leather, brushed nickel pin buckle", swatch: "#1a1a1f", image: imgCasual260702 },
+      { name: "Cognac Tan Casual Belt", article: "260703", note: "Rich cognac/tan smooth leather, antique brass buckle", swatch: "#a0522d", image: imgCasual260703 },
+      { name: "Burgundy Smooth Leather Casual Belt", article: "260706", note: "Deep plum/burgundy polished smooth leather, brushed nickel rectangular buckle", swatch: "#4a1528", image: imgCasual260706 },
     ],
   },
   {
@@ -143,12 +155,10 @@ const CATEGORIES: Category[] = [
       "Gift Packaging Available",
     ],
     products: [
-      { name: "Textured Brown Reversible Belt", article: "260707", note: "Brown Textured ⇄ Black Smooth", swatch: "#5a3a24" },
-      { name: "Classic Black Reversible Belt", article: "260708", note: "Black Smooth ⇄ Navy Blue", swatch: "#0f0f0f" },
-      { name: "Pebble Navy Reversible Belt", article: "260709", note: "Navy Pebble ⇄ Black Smooth", swatch: "#152244" },
-      { name: "Croco Brown Reversible Belt", article: "260710", note: "Cognac Croco ⇄ Black Smooth", swatch: "#4b2c17" },
-      { name: "Stitched Brown Reversible Belt", article: "260711", note: "Dark Brown ⇄ Black Smooth", swatch: "#6d442a" },
-      { name: "Croco Black Reversible Belt", article: "260712", note: "Black Croco ⇄ Dark Brown", swatch: "#151515" },
+      { name: "Carbon Fiber Black Reversible Belt", article: "260707", note: "Black carbon fiber embossed ⇄ Dark brown embossed", swatch: "#0f0f0f", image: imgReversible260707 },
+      { name: "Carbon Weave Black Reversible Belt", article: "260708", note: "Black carbon fiber textured ⇄ Dark brown textured", swatch: "#111111", image: imgReversible260708 },
+      { name: "Carbon Diagonal Reversible Belt", article: "260709", note: "Black carbon fiber diagonal ⇄ Dark brown carbon fiber", swatch: "#0d0d0d", image: imgReversible260709 },
+      { name: "Herringbone Black Reversible Belt", article: "260710", note: "Black herringbone woven texture ⇄ Dark brown herringbone", swatch: "#131313", image: imgReversible260710 },
     ],
   },
   {
@@ -164,10 +174,10 @@ const CATEGORIES: Category[] = [
       "Gift Packaging Available",
     ],
     products: [
-      { name: "Cognac Croco Formal Belt", article: "260713", note: "Embossed leather, cognac croco ⇄ black smooth", swatch: "#8a4a24", image: imgFormal260713 },
-      { name: "Classic Stitch Formal Belt", article: "260714", note: "Premium leather, dark brown ⇄ black smooth", swatch: "#2c1a10", image: imgFormal260714 },
-      { name: "Pebble Brown Formal Belt", article: "260715", note: "Grain leather, pebble brown ⇄ black smooth", swatch: "#5a3520", image: imgFormal260715 },
-      { name: "Jet Black Formal Belt", article: "260717", note: "Smooth leather, jet black ⇄ black smooth", swatch: "#0a0a0a", image: imgFormal260717 },
+      { name: "Navy Blue Formal Belt", article: "260713", note: "Navy blue smooth polished leather, brushed nickel rectangular buckle", swatch: "#1e2a4a", image: imgFormal260713 },
+      { name: "Cognac Marble Formal Belt", article: "260714", note: "Rich cognac/terracotta marble crackle pattern leather, brushed nickel buckle", swatch: "#6b3a1a", image: imgFormal260714 },
+      { name: "Oxblood Polished Formal Belt", article: "260715", note: "Deep burgundy/oxblood high-gloss polished leather, brushed nickel buckle", swatch: "#3d1020", image: imgFormal260715 },
+      { name: "Jet Black Formal Belt", article: "260717", note: "Premium smooth leather, jet black, sleek formal look", swatch: "#0a0a0a", image: imgFormal260717 },
     ],
   },
   {
@@ -205,7 +215,6 @@ const CATEGORIES: Category[] = [
       { name: "Forest Green Tooling Belt", article: "260726", note: "Deep carved leaf design, hand-painted details", swatch: "#274031", image: imgTooling260726 },
       { name: "Sunflower Tooling Belt", article: "260727", note: "Bright sunflower tooling, bold western look", swatch: "#c99a1f", image: imgTooling260727 },
       { name: "Heritage Floral Tooling Belt", article: "260729", note: "Hand-tooled floral design, antique finish", swatch: "#8a4a24", image: imgTooling260729 },
-      { name: "Midnight Navy Tooling Belt", article: "260730", note: "Elegant deep tooling, premium finish", swatch: "#101f4a", image: imgTooling260730 },
     ],
   },
   {
@@ -223,6 +232,23 @@ const CATEGORIES: Category[] = [
       { name: "Navy Blue Braided Belt", article: "260731", note: "Metal buckle + alug, classic navy, sleek finish", swatch: "#152244", image: imgBraided260731 },
       { name: "Black & Tan Braided Belt", article: "260732", note: "Metal buckle + alug, two-tone braid", swatch: "#1a1a1a", image: imgBraided260732 },
       { name: "Tan Braided Belt", article: "260735", note: "Metal buckle + alug, warm natural finish", swatch: "#a97142", image: imgBraided260735 },
+    ],
+  },
+  {
+    id: "p2c-embossed",
+    name: "P2C Embossed Belts",
+    tagline: "Precision-crafted embossed leather belts featuring distinctive textures and patterns. From pebble grain to basket weave, each belt showcases artisanal embossing techniques on premium genuine leather.",
+    highlights: [
+      "Premium Embossed Leather",
+      "Handcrafted Textures & Patterns",
+      "Antique Finished Hardware",
+      "OEM & Private Label Manufacturing",
+    ],
+    products: [
+      { name: "Black Pebble Grain Embossed Belt", article: "260762", note: "Black pebble grain leather, contrast tan stitching, V-tip detail", swatch: "#1a1a1f", image: imgP2C260762 },
+      { name: "Antique Brown Line-Embossed Belt", article: "260763", note: "Rich antique brown, horizontal line embossing, distressed finish", swatch: "#5a3018", image: imgP2C260763 },
+      { name: "Black Basket Weave Embossed Belt", article: "260764", note: "Black basket-weave interlocking leather, roller buckle", swatch: "#0f0f0f", image: imgP2C260764 },
+      { name: "Brown Basket Weave Embossed Belt", article: "260765", note: "Dark brown basket-weave pattern, antique brushed nickel buckle", swatch: "#3d1e10", image: imgP2C260765 },
     ],
   },
   {
@@ -340,8 +366,8 @@ const PRODUCT_GROUPS = [
     id: "belts",
     name: "Belts",
     icon: CircleDot,
-    tagline: "Seven signature belt collections — from everyday casual to hand-tooled artistry.",
-    categoryIds: ["casual", "formal", "reversible", "beaded", "tooled", "braided", "polo"],
+    tagline: "Eight signature belt collections — from everyday casual to hand-tooled artistry.",
+    categoryIds: ["casual", "formal", "reversible", "beaded", "tooled", "braided", "p2c-embossed", "polo"],
   },
   {
     id: "shoes",
@@ -780,13 +806,6 @@ function Hero() {
             className="fade-up mt-10 flex flex-wrap gap-4"
             style={{ animationDelay: "0.6s" }}
           >
-            <a
-              href="#contact"
-              className="group inline-flex items-center gap-2 bg-[var(--tan)] px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--navy)] transition hover:bg-[var(--cream)]"
-            >
-              Get a Quote{" "}
-              <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-            </a>
             <a
               href="#products"
               className="inline-flex items-center gap-2 border border-[var(--cream)]/50 px-6 py-3.5 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--cream)] transition hover:border-[var(--tan)] hover:text-[var(--tan)]"
@@ -1435,6 +1454,136 @@ function WhyWorkWithUs() {
   );
 }
 
+function FactorySection() {
+  const factoryItems = [
+    {
+      title: "Reception & Quality Control Office",
+      desc: "Our administrative and quality assurance hub where business operations and customer communications are managed.",
+      icon: Building2,
+      placeholderText: "Reception & Office Image Mockup"
+    },
+    {
+      title: "Main Stitching & Assembly Floor",
+      desc: "Our primary manufacturing floor equipped with high-performance sewing machines for precise stitch work.",
+      icon: Layers,
+      placeholderText: "Main Production Floor Image Mockup"
+    },
+    {
+      title: "Spacious Cutting & Prep Hall",
+      desc: "Where premium genuine leather hides are inspected, laid out, and prepared for precise template cutting.",
+      icon: Scissors,
+      placeholderText: "Wide Production Hall Image Mockup"
+    },
+    {
+      title: "Industrial Machinery Room",
+      desc: "Modern heavy-duty hydraulic presses, stamping machines, and splitting equipment for specialized operations.",
+      icon: Cpu,
+      placeholderText: "Machine Room Image Mockup"
+    },
+    {
+      title: "Artisanal Handcrafting Stations",
+      desc: "Where skilled local artisans perform intricate hand-burnishing, hand-painting, and detailing.",
+      icon: Paintbrush,
+      placeholderText: "Workers at Stations Image Mockup"
+    },
+    {
+      title: "Management & Executive Office",
+      desc: "The planning center where production timelines, global logistics, and custom OEM inquiries are analyzed.",
+      icon: ClipboardCheck,
+      placeholderText: "Management Office Image Mockup"
+    },
+    {
+      title: "Factory Exterior & Dispatch Dock",
+      desc: "Our secure manufacturing facility in Kanpur, designed for efficient logistics and fast global export.",
+      icon: Factory,
+      placeholderText: "Factory Exterior Image Mockup"
+    }
+  ];
+
+  return (
+    <section id="factory" className="bg-white py-24 md:py-32 border-t border-[var(--border)]">
+      <div className="mx-auto max-w-7xl px-6">
+        <Reveal className="text-center">
+          <Eyebrow />
+          <h2 className="mt-4 font-display text-4xl md:text-5xl">Our Manufacturing Facility</h2>
+          <p className="mx-auto mt-4 max-w-3xl text-lg text-[var(--ink)]/75">
+            Step inside our Kanpur-based production facility. Combining state-of-the-art machinery
+            with traditional craftsmanship, we possess the capacity to manufacture over 50,000+ pieces monthly.
+          </p>
+        </Reveal>
+
+        <Reveal delay={100} className="mt-16">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {/* Feature Item - Large Card */}
+            <div className="sm:col-span-2 lg:col-span-3 xl:col-span-2 flex flex-col justify-between border border-[var(--navy)] bg-[var(--navy)] text-[var(--cream)] p-8 shadow-lg">
+              <div>
+                <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--tan)]">Kanpur, India</span>
+                <h3 className="mt-4 font-display text-3xl md:text-4xl">Built for Global Scale</h3>
+                <p className="mt-6 text-base text-[var(--cream)]/80 leading-relaxed">
+                  Our Pewandi, Jajmau facility is custom-designed for end-to-end leather goods manufacturing.
+                  From raw hide selection and hydraulic press cutting to assembly, edge painting, quality inspection,
+                  and export shipping, every stage is optimized for efficiency and compliance.
+                </p>
+              </div>
+              <div className="mt-12 grid grid-cols-2 gap-4 border-t border-white/10 pt-6">
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-wider text-[var(--tan)]">Capacity</p>
+                  <p className="font-display text-2xl font-bold">50k+ pcs / mo</p>
+                </div>
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-wider text-[var(--tan)]">Compliance</p>
+                  <p className="font-display text-2xl font-bold">ISO 9001:2015</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Grid of the 7 factory locations */}
+            {factoryItems.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={index}
+                  className="group flex flex-col border border-[var(--border)] bg-[var(--cream)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--navy)] hover:shadow-xl"
+                >
+                  {/* Premium Placeholder Box */}
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-[#1c2333] to-[#011844] flex flex-col items-center justify-center p-6 text-center">
+                    {/* Background Graphic Lines */}
+                    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#c2b5ad_1px,transparent_1px)] [background-size:16px_16px]" />
+                    <Icon className="h-10 w-10 text-[var(--tan)] mb-3 relative z-10 transition-transform duration-300 group-hover:scale-110" />
+                    <span className="text-[10px] font-mono tracking-widest text-white/50 uppercase relative z-10">
+                      [ {item.placeholderText} ]
+                    </span>
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <span className="text-xs text-[var(--tan)] font-semibold uppercase tracking-wider border border-[var(--tan)] px-3 py-1.5 backdrop-blur-sm">
+                        Waiting for Image
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Details Card */}
+                  <div className="border-t border-[var(--border)] p-5 flex-grow flex flex-col justify-between">
+                    <div>
+                      <p className="text-[9px] font-semibold uppercase tracking-wider text-[var(--navy)]/65">
+                        Area 0{index + 1}
+                      </p>
+                      <h4 className="mt-1 font-display text-lg leading-tight font-bold text-[var(--navy)]">
+                        {item.title}
+                      </h4>
+                      <p className="mt-2 text-xs text-[var(--ink)]/70 leading-relaxed">
+                        {item.desc}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 function ContactSection() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
@@ -1729,6 +1878,8 @@ function Index() {
         <GlobalReach />
         <Certifications />
         <WhyWorkWithUs />
+        <Marquee />
+        <FactorySection />
         <Marquee />
         <ContactSection />
       </main>
