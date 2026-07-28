@@ -73,6 +73,13 @@ import imgP2C260763 from "../../P2C EMBOSSED BELT COLLECTION/Article No. 260763.
 import imgP2C260764 from "../../P2C EMBOSSED BELT COLLECTION/Article No. 260764.jpeg";
 import imgP2C260765 from "../../P2C EMBOSSED BELT COLLECTION/Article No. 260765.jpeg";
 
+// Factory Images
+import imgFactoryReception from "../../Factory images/Reception & Quality Control Office improved.jpeg";
+import imgFactoryAssembly from "../../Factory images/Main Stitching & Assembly Floor improved.jpeg";
+import imgFactoryArtisanal from "../../Factory images/Artisanal Handcrafting Stations improved.jpeg";
+import imgFactoryManagement from "../../Factory images/Management & Executive Office improved.jpeg";
+import imgFactoryExterior from "../../Factory images/Factory Exterior & Dispatch Dock improved.jpeg";
+
 // Handmade Beaded Belts Images
 import imgBeaded260719 from "../../HANDMADE BEADED BELTS/ARTICLE NO. 260719.jpeg";
 import imgBeaded260720 from "../../HANDMADE BEADED BELTS/ARTICLE NO. 260720.jpeg";
@@ -1455,49 +1462,49 @@ function WhyWorkWithUs() {
 }
 
 function FactorySection() {
+  const [activeImage, setActiveImage] = useState<{ src: string; title: string; desc: string } | null>(null);
+
   const factoryItems = [
     {
-      title: "Reception & Quality Control Office",
-      desc: "Our administrative and quality assurance hub where business operations and customer communications are managed.",
-      icon: Building2,
-      placeholderText: "Reception & Office Image Mockup"
-    },
-    {
       title: "Main Stitching & Assembly Floor",
-      desc: "Our primary manufacturing floor equipped with high-performance sewing machines for precise stitch work.",
-      icon: Layers,
-      placeholderText: "Main Production Floor Image Mockup"
-    },
-    {
-      title: "Spacious Cutting & Prep Hall",
-      desc: "Where premium genuine leather hides are inspected, laid out, and prepared for precise template cutting.",
-      icon: Scissors,
-      placeholderText: "Wide Production Hall Image Mockup"
-    },
-    {
-      title: "Industrial Machinery Room",
-      desc: "Modern heavy-duty hydraulic presses, stamping machines, and splitting equipment for specialized operations.",
-      icon: Cpu,
-      placeholderText: "Machine Room Image Mockup"
-    },
-    {
-      title: "Artisanal Handcrafting Stations",
-      desc: "Where skilled local artisans perform intricate hand-burnishing, hand-painting, and detailing.",
-      icon: Paintbrush,
-      placeholderText: "Workers at Stations Image Mockup"
-    },
-    {
-      title: "Management & Executive Office",
-      desc: "The planning center where production timelines, global logistics, and custom OEM inquiries are analyzed.",
-      icon: ClipboardCheck,
-      placeholderText: "Management Office Image Mockup"
+      desc: "Our primary manufacturing floor equipped with high-performance sewing machines, where over 50,000+ pieces of premium leather goods and safety footwear are produced monthly by skilled operators.",
+      image: imgFactoryAssembly,
+      span: "md:col-span-8 md:row-span-2",
+      aspect: "aspect-[16/9] md:aspect-auto md:h-full",
+      area: "01",
     },
     {
       title: "Factory Exterior & Dispatch Dock",
-      desc: "Our secure manufacturing facility in Kanpur, designed for efficient logistics and fast global export.",
-      icon: Factory,
-      placeholderText: "Factory Exterior Image Mockup"
-    }
+      desc: "Our secure manufacturing facility exterior in Pewandi, Jajmau, Kanpur, built for direct global export and dispatch.",
+      image: imgFactoryExterior,
+      span: "md:col-span-4",
+      aspect: "aspect-[4/3]",
+      area: "02",
+    },
+    {
+      title: "Reception & Quality Control Office",
+      desc: "The quality assurance checkpoint and receptionist lounge where client relations and order inspections take place.",
+      image: imgFactoryReception,
+      span: "md:col-span-4",
+      aspect: "aspect-[4/3]",
+      area: "03",
+    },
+    {
+      title: "Artisanal Handcrafting Stations",
+      desc: "Where master leather craftsmen perform hand-burnishing, hand-painting, and precise handcrafting detailing.",
+      image: imgFactoryArtisanal,
+      span: "md:col-span-6",
+      aspect: "aspect-[16/9]",
+      area: "04",
+    },
+    {
+      title: "Management & Executive Office",
+      desc: "The corporate command center where planning, logistics, custom OEM orders, and operations are managed.",
+      image: imgFactoryManagement,
+      span: "md:col-span-6",
+      aspect: "aspect-[16/9]",
+      area: "05",
+    },
   ];
 
   return (
@@ -1507,79 +1514,121 @@ function FactorySection() {
           <Eyebrow />
           <h2 className="mt-4 font-display text-4xl md:text-5xl">Our Manufacturing Facility</h2>
           <p className="mx-auto mt-4 max-w-3xl text-lg text-[var(--ink)]/75">
-            Step inside our Kanpur-based production facility. Combining state-of-the-art machinery
+            Step inside our Kanpur-based production facility. Combining advanced machinery
             with traditional craftsmanship, we possess the capacity to manufacture over 50,000+ pieces monthly.
           </p>
         </Reveal>
 
         <Reveal delay={100} className="mt-16">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {/* Feature Item - Large Card */}
-            <div className="sm:col-span-2 lg:col-span-3 xl:col-span-2 flex flex-col justify-between border border-[var(--navy)] bg-[var(--navy)] text-[var(--cream)] p-8 shadow-lg">
+          <div className="grid gap-6 grid-cols-1 md:grid-cols-12 md:auto-rows-[minmax(180px,auto)]">
+            {/* Introductory Text Box */}
+            <div className="md:col-span-12 lg:col-span-4 bg-[var(--navy)] text-[var(--cream)] p-8 flex flex-col justify-between shadow-md border-l-4 border-[var(--tan)]">
               <div>
-                <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--tan)]">Kanpur, India</span>
-                <h3 className="mt-4 font-display text-3xl md:text-4xl">Built for Global Scale</h3>
-                <p className="mt-6 text-base text-[var(--cream)]/80 leading-relaxed">
-                  Our Pewandi, Jajmau facility is custom-designed for end-to-end leather goods manufacturing.
+                <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--tan)]">Jajmau, Kanpur</span>
+                <h3 className="mt-4 font-display text-2xl md:text-3xl leading-tight">Built for Global Scale & Quality</h3>
+                <p className="mt-4 text-sm text-[var(--cream)]/80 leading-relaxed">
+                  Our facility is optimized for end-to-end leather goods manufacturing.
                   From raw hide selection and hydraulic press cutting to assembly, edge painting, quality inspection,
                   and export shipping, every stage is optimized for efficiency and compliance.
                 </p>
               </div>
-              <div className="mt-12 grid grid-cols-2 gap-4 border-t border-white/10 pt-6">
+              <div className="mt-8 grid grid-cols-2 gap-4 border-t border-white/10 pt-4 text-xs">
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-[var(--tan)]">Capacity</p>
-                  <p className="font-display text-2xl font-bold">50k+ pcs / mo</p>
+                  <p className="font-semibold text-[var(--tan)]">Production Limit</p>
+                  <p className="font-display text-lg font-bold">50k+ pcs / mo</p>
                 </div>
                 <div>
-                  <p className="text-[10px] font-semibold uppercase tracking-wider text-[var(--tan)]">Compliance</p>
-                  <p className="font-display text-2xl font-bold">ISO 9001:2015</p>
+                  <p className="font-semibold text-[var(--tan)]">Standards</p>
+                  <p className="font-display text-lg font-bold">ISO 9001:2015</p>
                 </div>
               </div>
             </div>
 
-            {/* Grid of the 7 factory locations */}
-            {factoryItems.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={index}
-                  className="group flex flex-col border border-[var(--border)] bg-[var(--cream)] transition-all duration-300 hover:-translate-y-1 hover:border-[var(--navy)] hover:shadow-xl"
-                >
-                  {/* Premium Placeholder Box */}
-                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-gradient-to-br from-[#1c2333] to-[#011844] flex flex-col items-center justify-center p-6 text-center">
-                    {/* Background Graphic Lines */}
-                    <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#c2b5ad_1px,transparent_1px)] [background-size:16px_16px]" />
-                    <Icon className="h-10 w-10 text-[var(--tan)] mb-3 relative z-10 transition-transform duration-300 group-hover:scale-110" />
-                    <span className="text-[10px] font-mono tracking-widest text-white/50 uppercase relative z-10">
-                      [ {item.placeholderText} ]
+            {/* Grid of the 5 factory locations */}
+            {factoryItems.map((item, index) => (
+              <div
+                key={index}
+                onClick={() => setActiveImage({ src: item.image, title: item.title, desc: item.desc })}
+                className={`group cursor-pointer flex flex-col border border-[var(--border)] bg-[var(--cream)] transition-all duration-300 hover:border-[var(--navy)] hover:shadow-xl ${item.span}`}
+              >
+                {/* Image Box */}
+                <div className={`relative w-full overflow-hidden bg-black/5 ${item.aspect}`}>
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                  {/* Click to Zoom Overlay */}
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <span className="text-xs text-[var(--tan)] font-semibold uppercase tracking-wider border border-[var(--tan)] px-3 py-1.5 backdrop-blur-sm flex items-center gap-1.5">
+                      <Eye className="h-4 w-4" /> Click to Zoom
                     </span>
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <span className="text-xs text-[var(--tan)] font-semibold uppercase tracking-wider border border-[var(--tan)] px-3 py-1.5 backdrop-blur-sm">
-                        Waiting for Image
-                      </span>
-                    </div>
                   </div>
+                  <span className="absolute left-3 top-3 bg-[var(--navy)] text-[var(--tan)] text-[9px] font-mono font-bold tracking-widest px-2 py-0.5 shadow-sm">
+                    AREA {item.area}
+                  </span>
+                </div>
 
-                  {/* Details Card */}
-                  <div className="border-t border-[var(--border)] p-5 flex-grow flex flex-col justify-between">
-                    <div>
-                      <p className="text-[9px] font-semibold uppercase tracking-wider text-[var(--navy)]/65">
-                        Area 0{index + 1}
-                      </p>
-                      <h4 className="mt-1 font-display text-lg leading-tight font-bold text-[var(--navy)]">
-                        {item.title}
-                      </h4>
-                      <p className="mt-2 text-xs text-[var(--ink)]/70 leading-relaxed">
-                        {item.desc}
-                      </p>
-                    </div>
+                {/* Details Card */}
+                <div className="border-t border-[var(--border)] p-5 flex-grow flex flex-col justify-between">
+                  <div>
+                    <h4 className="font-display text-base leading-tight font-bold text-[var(--navy)] group-hover:text-[var(--tan)] transition-colors">
+                      {item.title}
+                    </h4>
+                    <p className="mt-2 text-xs text-[var(--ink)]/70 leading-relaxed">
+                      {item.desc}
+                    </p>
                   </div>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </Reveal>
       </div>
+
+      {/* Full-screen Lightbox Modal */}
+      {activeImage && (
+        <div
+          className="fixed inset-0 z-50 flex flex-col items-center justify-center p-4 md:p-8 backdrop-blur-md"
+          style={{ backgroundColor: 'rgba(0,0,0,0.95)' }}
+          onClick={() => setActiveImage(null)}
+        >
+          {/* Close Button */}
+          <button
+            type="button"
+            onClick={() => setActiveImage(null)}
+            className="absolute right-6 top-6 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-[var(--navy)] text-[var(--tan)] hover:bg-[var(--cream)] hover:text-[var(--navy)] transition shadow-lg"
+            aria-label="Close lightbox"
+          >
+            <X className="h-6 w-6" />
+          </button>
+
+          <div
+            className="relative max-w-5xl w-full flex flex-col items-center justify-center gap-4"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Image Container - Displays complete uncropped image */}
+            <div className="w-full max-h-[75vh] flex items-center justify-center overflow-hidden">
+              <img
+                src={activeImage.src}
+                alt={activeImage.title}
+                className="max-w-full max-h-[75vh] object-contain shadow-2xl border border-white/10"
+              />
+            </div>
+
+            {/* Image Title & Caption */}
+            <div className="text-center text-white max-w-2xl px-4 mt-2">
+              <h3 className="font-display text-xl md:text-2xl font-bold text-[var(--tan)]">
+                {activeImage.title}
+              </h3>
+              <p className="mt-2 text-sm text-gray-300 leading-relaxed">
+                {activeImage.desc}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
