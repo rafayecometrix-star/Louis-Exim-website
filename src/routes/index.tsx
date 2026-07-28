@@ -1469,40 +1469,30 @@ function FactorySection() {
       title: "Main Stitching & Assembly Floor",
       desc: "Our primary manufacturing floor equipped with high-performance sewing machines, where over 50,000+ pieces of premium leather goods and safety footwear are produced monthly by skilled operators.",
       image: imgFactoryAssembly,
-      span: "md:col-span-8 md:row-span-2",
-      aspect: "aspect-[16/9] md:aspect-auto md:h-full",
       area: "01",
     },
     {
       title: "Factory Exterior & Dispatch Dock",
       desc: "Our secure manufacturing facility exterior in Pewandi, Jajmau, Kanpur, built for direct global export and dispatch.",
       image: imgFactoryExterior,
-      span: "md:col-span-4",
-      aspect: "aspect-[4/3]",
       area: "02",
     },
     {
       title: "Reception & Quality Control Office",
       desc: "The quality assurance checkpoint and receptionist lounge where client relations and order inspections take place.",
       image: imgFactoryReception,
-      span: "md:col-span-4",
-      aspect: "aspect-[4/3]",
       area: "03",
     },
     {
       title: "Artisanal Handcrafting Stations",
       desc: "Where master leather craftsmen perform hand-burnishing, hand-painting, and precise handcrafting detailing.",
       image: imgFactoryArtisanal,
-      span: "md:col-span-6",
-      aspect: "aspect-[16/9]",
       area: "04",
     },
     {
       title: "Management & Executive Office",
       desc: "The corporate command center where planning, logistics, custom OEM orders, and operations are managed.",
       image: imgFactoryManagement,
-      span: "md:col-span-6",
-      aspect: "aspect-[16/9]",
       area: "05",
     },
   ];
@@ -1520,26 +1510,26 @@ function FactorySection() {
         </Reveal>
 
         <Reveal delay={100} className="mt-16">
-          <div className="grid gap-6 grid-cols-1 md:grid-cols-12 md:auto-rows-[minmax(180px,auto)]">
-            {/* Introductory Text Box */}
-            <div className="md:col-span-12 lg:col-span-4 bg-[var(--navy)] text-[var(--cream)] p-8 flex flex-col justify-between shadow-md border-l-4 border-[var(--tan)]">
+          <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+            {/* Introductory Text Box (takes exactly 1 slot) */}
+            <div className="bg-[var(--navy)] text-[var(--cream)] p-8 flex flex-col justify-between shadow-md border-l-4 border-[var(--tan)] aspect-[4/3]">
               <div>
                 <span className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--tan)]">Jajmau, Kanpur</span>
                 <h3 className="mt-4 font-display text-2xl md:text-3xl leading-tight">Built for Global Scale & Quality</h3>
-                <p className="mt-4 text-sm text-[var(--cream)]/80 leading-relaxed">
+                <p className="mt-4 text-xs text-[var(--cream)]/80 leading-relaxed">
                   Our facility is optimized for end-to-end leather goods manufacturing.
                   From raw hide selection and hydraulic press cutting to assembly, edge painting, quality inspection,
                   and export shipping, every stage is optimized for efficiency and compliance.
                 </p>
               </div>
-              <div className="mt-8 grid grid-cols-2 gap-4 border-t border-white/10 pt-4 text-xs">
+              <div className="mt-6 grid grid-cols-2 gap-4 border-t border-white/10 pt-4 text-[11px]">
                 <div>
                   <p className="font-semibold text-[var(--tan)]">Production Limit</p>
-                  <p className="font-display text-lg font-bold">50k+ pcs / mo</p>
+                  <p className="font-display text-base font-bold">50k+ pcs / mo</p>
                 </div>
                 <div>
                   <p className="font-semibold text-[var(--tan)]">Standards</p>
-                  <p className="font-display text-lg font-bold">ISO 9001:2015</p>
+                  <p className="font-display text-base font-bold">ISO 9001:2015</p>
                 </div>
               </div>
             </div>
@@ -1549,23 +1539,25 @@ function FactorySection() {
               <div
                 key={index}
                 onClick={() => setActiveImage({ src: item.image, title: item.title, desc: item.desc })}
-                className={`group cursor-pointer flex flex-col border border-[var(--border)] bg-[var(--cream)] transition-all duration-300 hover:border-[var(--navy)] hover:shadow-xl ${item.span}`}
+                className="group cursor-pointer flex flex-col border border-[var(--border)] bg-[var(--cream)] transition-all duration-300 hover:border-[var(--navy)] hover:shadow-xl"
               >
                 {/* Image Box */}
-                <div className={`relative w-full overflow-hidden bg-black/5 ${item.aspect}`}>
+                <div className="relative w-full overflow-hidden bg-black/5 aspect-[4/3]">
                   <img
                     src={item.image}
                     alt={item.title}
                     loading="lazy"
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                   />
-                  {/* Click to Zoom Overlay */}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <span className="text-xs text-[var(--tan)] font-semibold uppercase tracking-wider border border-[var(--tan)] px-3 py-1.5 backdrop-blur-sm flex items-center gap-1.5">
-                      <Eye className="h-4 w-4" /> Click to Zoom
-                    </span>
-                  </div>
-                  <span className="absolute left-3 top-3 bg-[var(--navy)] text-[var(--tan)] text-[9px] font-mono font-bold tracking-widest px-2 py-0.5 shadow-sm">
+                  {/* Subtle bottom shadow overlay to ensure text legibility */}
+                  <div className="absolute inset-x-0 bottom-0 h-1/4 bg-gradient-to-t from-black/70 to-transparent pointer-events-none" />
+                  
+                  {/* Underlined "Click to Zoom" link button at the bottom-right corner */}
+                  <span className="absolute right-3 bottom-3 text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--tan)] underline decoration-[var(--tan)] underline-offset-4 transition-colors duration-300 group-hover:text-white z-10">
+                    Click to Zoom
+                  </span>
+
+                  <span className="absolute left-3 top-3 bg-[var(--navy)] text-[var(--tan)] text-[9px] font-mono font-bold tracking-widest px-2 py-0.5 shadow-sm z-10">
                     AREA {item.area}
                   </span>
                 </div>
